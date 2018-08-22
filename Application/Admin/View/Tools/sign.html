@@ -1,0 +1,140 @@
+<include file="Public:header"/>
+<script type="text/javascript" src="__PUBLIC__/layer/laydate/laydate.js"></script>
+<div id="main-content">
+	<div id="top-alert" class="fixed alert alert-error" style="display: none;">
+		<button class="close fixed" style="margin-top: 4px;">&times;</button>
+		<div class="alert-content">警告内容</div>
+	</div>
+	<div id="main" class="main">
+		<div class="main-title-h">
+			 <span class="h1-title"><empty name="data">任务一（持币分红）</span>
+		</div>  
+		<div class="tab-wrap">
+			<div class="tab-content">
+				<form id="form" action="{:U('Tools/signs')}" method="post" class="form-horizontal">
+					<div id="tab" class="tab-pane in tab">
+						<div class="form-item cf">
+							<table>
+                            
+                            
+                            
+                            
+								<tr class="controls">
+									<td class="item-label">币种 :</td>
+									<td>
+                                        <!--<select name="coinname" id="bid" class="form-control input-10x" onChange="hjdsahd(this.value)">
+                                            <volist name='coinList' id='vo'>
+                                                <option value="{$vo['name']}" <if condition="$vo['title'] eq $cointitle"> selected="selected"</if> >{$vo['title']}</option>
+                                            </volist>
+                                        </select>-->
+                                        CNY
+									</td>
+									<td class="item-note"></td>
+								</tr>
+								<tr class="controls">
+									<td class="item-label">送币基数 :</td>
+									<td>
+										<input type="text" class="form-control input-10x" name="num" value="{$sql.num}">
+									</td>
+									<td class="item-note"></td>
+								</tr>
+								<tr class="controls">
+									<td class="item-label">上级推荐人送币基数 :</td>
+									<td>
+										<input type="text" class="form-control input-10x" name="num3" value="{$sql.num3}">
+									</td>
+									<td class="item-note"></td>
+								</tr>
+								<tr class="controls">
+									<td class="item-label">上上级推荐人送币基数 :</td>
+									<td>
+										<input type="text" class="form-control input-10x" name="num4" value="{$sql.num4}">
+									</td>
+									<td class="item-note"></td>
+								</tr>
+								<tr class="controls">
+									<td class="item-label">开始时间 :</td>
+									<td>
+										<input type="text" class="form-control input-10x" name="starttime" value="{$sql.starttime}" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
+									</td>
+									<td class="item-note"></td>
+								</tr>
+								<tr class="controls">
+									<td class="item-label">结束时间 :</td>
+									<td>
+										<input type="text" class="form-control input-10x" name="endtime" value="{$sql.endtime}" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
+									</td>
+									<td class="item-note"></td>
+								</tr>
+								<tr class="controls">
+									<td class="item-label">每天开始时间 :</td>
+									<td>
+										<input type="text" class="form-control input-10x" name="daystart" value="{$sql.daystart}" >
+									</td>
+									<td class="item-note"></td>
+								</tr>
+								<tr class="controls">
+									<td class="item-label">每天结束时间 :</td>
+									<td>
+										<input type="text" class="form-control input-10x" name="dayend" value="{$sql.dayend}" >
+									</td>
+									<td class="item-note"></td>
+								</tr>
+								<tr class="controls">
+									<td class="item-label">前台展示任务说明 :</td>
+									<td>
+										<input type="text" class="form-control input-10x" name="shuoming" value="{$sql.shuoming}">
+									</td>
+									<td class="item-note"></td>
+								</tr>
+								<tr class="controls">
+									<td class="item-label">前台展示活动时间 :</td>
+									<td>
+										<input type="text" class="form-control input-10x" name="time" value="{$sql.time}">
+									</td>
+									<td class="item-note"></td>
+								</tr>
+								<tr class="controls">
+									<td class="item-label">状态 :</td>
+									<td><select name="status" class="form-control input-10x">
+										<option value="1"
+										<eq name="sql.status" value="1">selected</eq>
+										>开启</option>
+										<option value="0"
+										<eq name="sql.status" value="0">selected</eq>
+										>关闭</option>
+									</select></td>
+									<td class="item-note"></td>
+								</tr>
+								<tr class="controls">
+									<td class="item-label"></td>
+									<td>
+										<div class="form-item cf">
+											<button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
+											<notempty name="data.id"><input type="hidden" name="id" value="{$data.id}"/>
+											</notempty>
+										</div>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	//提交表单
+	$('#submit').click(function () {
+		$('#form').submit();
+	});
+</script>
+
+<include file="Public:footer"/>
+<block name="script">
+	<script type="text/javascript" charset="utf-8">
+		//导航高亮
+		highlight_subnav("{:U('User/qianbao')}");
+	</script>
+</block>

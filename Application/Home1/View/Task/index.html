@@ -1,0 +1,196 @@
+<include file="Public:header" />
+	
+    
+
+	
+<div class="autobox ">
+	<div class="now">
+		<i class="fa fa-home fa-lg move mr5"></i><a href="/" class="movesay">首页</a> &gt; <a href="/task/index.html" class="movesay">C计划</a></div>
+	<div class="main-content">
+		<style>
+	.nav-tab-list .nav-tab-hover{
+		width:100%;
+		top:60px;
+		height:50px;
+		line-height:50px;
+		background:#EAEDF4;
+		position:absolute;
+		box-sizing:content-box;
+		z-index:1;
+		transition:all 0.5s;
+		-webkit-transition:all 0.5s;
+		display:none;
+	}
+</style>
+ 
+<include file="Task:left" />
+
+		<div class="tag-list-content assets_content bg_w">
+			<div class="safe_center clear">
+				<h1>
+					<span>C计划</span>
+					<!--<span>
+												<a class="right" onClick="$('#hints').slideToggle();"><i class="fa fa-hand-o-right move fz_14 mr5"></i><span class="fz_12 move">查看介绍</span></a>
+											</span>-->
+				</h1>
+			</div>
+			<!--<div id="hints" class="mytips" style="display:none;">
+				
+				<p>
+                <notempty name="prompt_text">
+                    {$prompt_text}
+                </notempty>
+				
+				</p>			
+				
+				</div>-->
+			<style>
+				.pur_dy_li{ height: 68px; margin: 0; line-height: 68px; width: 33%}
+				.fl{ float:left}
+				.clear{ clear:both}
+				.kuang li{ width:50%; padding:15px; height:100px; overflow:hidden; position:relative}
+				.kuang li .img{ width:100%; height:100px}
+				.kuang li .img p:nth-child(1){ font-size:16px; color:#333; margin-bottom:10px; font-weight:bolder}
+				.kuang li .img p:nth-child(2){}
+				.kuang li img{ width:100%; border:1px solid #eee; cursor:pointer}
+				.kuang li button{ color:#986b0d; background:#fbd74f; border:none; border-radius:20px; padding:6px 20px; margin-top:10px}
+				.kuang li button:hover{ background:#ffe78b; color:#986b0d;}
+				.kuang li .shuoming{ background:#fbd74f; width:100%; height:99px; overflow:hidden; opacity:0.95; position:absolute; left:0; bottom:65px; padding:15px; display:none}
+				.kuang li .shuoming p{ font-size:14px; margin-bottom:0 auto 10px}
+			</style>
+			<ul class="kuang" id="" style="width: 930px">
+			<volist name="data" id="v">
+				<li class="fl">
+                	<div class="con  text-left">
+                    	<div class="img">
+                        	<div class="fl" style="width:10%">
+                                <img src="/wap/images/m_task.png" width="100%" height="auto">
+                            </div>
+                            <div class="fl" style="width:50%; padding:0 10px">
+                                <p>{$v[shuoming]}</p>
+                              <p style="height:34px; overflow:hidden">{$v[time]}</p>
+                            </div>
+                            <div class="fl" style="width:30%; padding:0 10px">
+                                <p class="text-center" style="margin:0">{$v['sci']}</p>
+                              <div class="text-center" style="width:100%;">
+                                    <if condition="$v[islq]">
+                                        <button  class="btn btn-danger" style=" background:#0EB496; color:#fff">&nbsp;已领取&nbsp;&nbsp;</button>
+                                    <else />
+                                        <button onclick="lin('{$v[id]}'); return false;" class="btn btn-info" <if condition="$v['id'] eq 5"> id="btn-wk" </if> >立即领取</button>
+                                    </if>
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div>
+                        </div>
+                    </div>
+                </li>
+			</volist>
+                <div class="clear"></div>
+            </ul>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+</script>
+<script>
+	function lin(id){
+		if(id==1) var name = "sign";
+		if(id==2) var name = "regist";
+		if(id==3) var name = "renzheng";
+		if(id==5) var name = "cjed";
+		if(id==6) var name = "yaoqing";
+		
+		$.post("/Task/"+name+"/", {
+		}, function (data) {
+			if (data.status == 1) {
+								layer.msg(data.info, {icon: 1,time:3000});
+								window.location = window.location.href;
+								if(data.url){
+									window.location.href=data.url;
+								}else{
+									window.location = window.location.href;
+								}
+			} else {
+				$("#login_verify_up").click();
+				layer.msg(data.info, {icon: 2});
+				//window.setTimeout("window.location.reload();",2000); 
+			}
+		}, "json");
+	}
+</script>
+<script type="text/javascript">
+	// 左边tab切换&浮动导航
+	$(function () {
+		// 左边tab切换&浮动导航
+		(function () {
+			var tab   = $('.nav-tab-list dd');
+			var hover = $('.nav-tab-hover');
+			var pos   = 0;
+			tab.each(function (index) {
+				var $this = $(this);
+				if ($this.hasClass('active')) {
+					pos = index;
+				}
+				$this.hover(function () {
+					_moveTo(index);
+				}, function () {
+					_moveTo(pos);
+				});
+			});
+			_moveTo(pos);
+			$('.nav-tab-hover').show();
+
+			function _moveTo(index) {
+				hover.css("top", 60 + 50 * index);
+				tab.removeClass('active');
+				tab.eq(index).addClass('active');
+			}
+		})();
+	});
+
+	$(window).on('scroll resize', function () {
+		if (document.body.scrollTop < 100) {
+			$('#left-nav-bar').css("top", 0);
+		} else if (document.body.scrollTop > ($('.tag-list-content').height() - $('#left-nav-bar').height() + 100)) {
+			$('#left-nav-bar').css("top", ($('.tag-list-content').height() - $('#left-nav-bar').height()));
+		} else {
+			$('#left-nav-bar').css("top", document.body.scrollTop - 100);
+		}
+	});
+</script>
+<script>
+	var hints = "0";
+	if(hints == 1){
+		$('#hints').show();
+	}
+	$('#finance_box').addClass('active');
+	$('.finan_index').addClass('active');
+</script>	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+<include file="Public:footer" />

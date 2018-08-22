@@ -1,0 +1,178 @@
+<include file="Public:header"/>
+
+
+
+<div id="main-content">
+	<div id="top-alert" class="fixed alert alert-error" style="display: none;">
+		<button class="close fixed" style="margin-top: 4px;">&times;</button>
+		<div class="alert-content">警告内容</div>
+	</div>
+	<div id="main" class="main">
+		<div class="main-title-h">
+			<span class="h1-title">充值记录</span>
+		</div>
+		<div class="cf">
+			<div class="fl">
+				当前充值用户数量：{$cont['num']}人，金额：{$cont['pri']}，今日
+			</div>
+			<div class="search-form fr cf">
+				<div class="sleft">
+					<form name="formSearch" id="formSearch" method="get" name="form1">
+						<select style="width: 160px; float: left; margin-right: 10px;" name="stu" class="form-control">
+							<option value=""
+							<empty name="Think.get.stu">selected</empty>
+							>全部状态</option>
+							<option value="1"
+							<eq name="Think.get.stu" value="1">selected</eq>
+							>交易中</option>
+							<option value="2"
+							<eq name="Think.get.stu" value="2">selected</eq>
+							>交易成功</option>
+							<option value="3"
+							<eq name="Think.get.stu" value="3">selected</eq>
+							>交易取消</option>
+							
+						</select>
+						<select style=" width: 160px; float: left; margin-right: 10px;" name="field" class="form-control">
+							<option value="moble"
+							<eq name="Think.get.field" value="moble">selected</eq>
+							>手机号</option>
+							<option value="uid"
+							<eq name="Think.get.field" value="uid">selected</eq>
+							>UID</option>
+							<option value="cid"
+							<eq name="Think.get.field" value="cid">selected</eq>
+							>订单号</option>
+						</select>
+						<input type="text" name="name" class="search-input form-control  " value="{$Think.get.name}" placeholder="请输入查询内容" style="">
+						<a class="sch-btn" href="javascript:;" id="search"> <i class="btn-search"></i> </a>
+					</form>
+					<script>
+						//搜索功能
+						$(function () {
+							$('#search').click(function () {
+								$('#formSearch').submit();
+							});
+						});
+						//回车搜索
+						$(".search-input").keyup(function (e) {
+							if (e.keyCode === 13) {
+								$("#search").click();
+								return false;
+							}
+						});
+					</script>
+				</div>
+			</div>
+		</div>
+		<div class="data-table table-striped">
+			<table class="">
+				<thead>
+				<tr>
+                            <th width="">UID</th>
+                            <th width="">手机号</th>
+                            <th width="">总充值/提现</th>
+                            <th width="">付款姓名</th>
+                            <th width="">数量</th>
+                            <th width="">转账金额</th>
+                            <th width="">收款姓名</th>
+                            <th width="">收款电话</th>
+                            <th width="">收款账号</th>
+                            <th width="">建立时间</th>
+                            <th width="">状态</th>
+				</tr>
+				</thead>
+				<tbody>
+				<notempty name="list">
+					<volist name="list" id="vo">
+						<tr>
+							<td>{$vo['uid']}</td>
+							<td>{$vo['moble']}</td>
+	                        <td>{$vo.chong}/{$vo.ti}</td>
+							<td>{$vo['name']}</td>
+	                        <td>{$vo.num}</td>
+                            <td><font style="color: #E55600!important;">￥{$vo.pri}</font></td>
+	                        <td>{$vo.truename}</td>
+                            <td>{$vo.min}</td>
+	                        <td>
+                           {$vo.kaihu}<br>
+                           账号：{$vo.username}<br>
+							<font style="color: #E55600!important;">付款备注：{$vo.cid}</font>                           
+                            </td>
+                            <td>{$vo.uptime|date='Y-m-d H:i:s',###}</td>
+	                        <td>
+			                   
+							<eq name="vo.status" value="1">
+							   <div>未付款<a  href="/Admin/Finance/mycz_q/id/{$vo.cid}" style="    color: #2674FF!important;"> 我已收款 </a></div>
+			                </eq>
+							<eq name="vo.status" value="2">
+							   <div>已付款<a  href="/Admin/Finance/mycz_q/id/{$vo.cid}" style="    color: #2674FF!important;"> 我已收款 </a></div>
+							</eq>
+							<eq name="vo.status" value="99">
+								交易成功
+							</eq>
+							<eq name="vo.status" value="0">
+								交易取消
+							</eq>
+							<eq name="vo.pp" value="1">	
+							<a class="cur" style="color: #E55600!important;" href="/admin/Finance/mycz_del/id/{$vo.cid}">取消</a>
+							</eq>
+							 </td>
+						</tr>
+					</volist>
+					<else/>
+					<td colspan="12" class="text-center">Oh! 暂时还没有内容!</td>
+				</notempty>
+				</tbody>
+			</table>
+			<div class="page">
+				<div>{$page}</div>
+			</div>
+		</div>
+	</div>
+</div>
+<input type="hidden" id="autoid">
+<audio controls autoplay id="mess">
+  <source src="/images/message.wav" >
+</audio>
+	<script type="text/javascript" charset="utf-8"> 
+		function playss(){
+//			alert(1);
+			var player = $("#mess")[0]; /*jquery对象转换成js对象*/
+			if (player.paused){ /*如果已经暂停*/
+				player.play(); /*播放*/
+			}else {
+				player.pause();/*暂停*/
+			}
+		}
+		var oid = 0;
+		function ctcauto(){
+			$.post("/Admin/Finance/mycz_qs.html", {
+				id : 1
+			}, function (data) {
+				if (data.status == 1) {
+					var oid = $("#autoid").val();
+					if(oid !=data.info){
+						//layer.msg("新订单", {icon: 1});
+						playss();
+						$("#autoid").val(data.info);
+					}
+					
+				}
+			}, "json");
+			
+		}
+		window.setInterval("ctcauto()", 10000);
+		ctcauto();
+		
+		
+	</script>
+
+
+<include file="Public:footer"/>
+<block name="script">
+	<script type="text/javascript" charset="utf-8"> 
+		//导航高亮
+		highlight_subnav("{:U('Finance/mycz')}");
+	</script>
+</block>

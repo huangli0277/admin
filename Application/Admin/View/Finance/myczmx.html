@@ -1,0 +1,120 @@
+<include file="Public:header"/>
+<div id="main-content">
+	<div id="top-alert" class="fixed alert alert-error" style="display: none;">
+		<button class="close fixed" style="margin-top: 4px;">&times;</button>
+		<div class="alert-content">警告内容</div>
+	</div>
+	<div id="main" class="main">
+		<div class="main-title-h">
+			<span class="h1-title">每日充值</span>
+		</div>
+		<div class="cf">
+			<div class="fl">
+			</div>
+			<!--<div class="search-form fr cf">
+				<div class="sleft">
+					<form name="formSearch" id="formSearch" method="get" name="form1">
+						<select style="width: 160px; float: left; margin-right: 10px;" name="stu" class="form-control">
+							<option value=""
+							<empty name="Think.get.stu">selected</empty>
+							>全部状态</option>
+							<option value="1"
+							<eq name="Think.get.stu" value="1">selected</eq>
+							>交易中</option>
+							<option value="2"
+							<eq name="Think.get.stu" value="2">selected</eq>
+							>交易成功</option>
+							<option value="3"
+							<eq name="Think.get.stu" value="3">selected</eq>
+							>交易取消</option>
+							
+						</select>
+						<select style=" width: 160px; float: left; margin-right: 10px;" name="field" class="form-control">
+							<option value="moble"
+							<eq name="Think.get.field" value="moble">selected</eq>
+							>手机号</option>
+							<option value="uid"
+							<eq name="Think.get.field" value="uid">selected</eq>
+							>UID</option>
+							<option value="cid"
+							<eq name="Think.get.field" value="cid">selected</eq>
+							>订单号</option>
+						</select>
+						<input type="text" name="name" class="search-input form-control  " value="{$Think.get.name}" placeholder="请输入查询内容" style="">
+						<a class="sch-btn" href="javascript:;" id="search"> <i class="btn-search"></i> </a>
+					</form>
+					<script>
+						//搜索功能
+						$(function () {
+							$('#search').click(function () {
+								$('#formSearch').submit();
+							});
+						});
+						//回车搜索
+						$(".search-input").keyup(function (e) {
+							if (e.keyCode === 13) {
+								$("#search").click();
+								return false;
+							}
+						});
+					</script>
+				</div>
+			</div>-->
+		</div>
+		<div class="data-table table-striped">
+			<table class="">
+				<thead>
+				<tr>
+                
+                            <th width="">陆日森</th>
+                            <th width="">杨茜</th>
+                            <th width="">张翔</th>
+                            <th width="">张琪</th>
+                            <th width="">张秋平</th>
+                            <th width="">今日总额</th>
+                            <th width="">时间</th>
+				</tr>
+				</thead>
+				<tbody>
+				<notempty name="messa">
+					<volist name="messa" id="vo">
+						<tr>
+							<td>{$vo[1]['num']}</td>
+							<td>{$vo[2]['num']}</td>
+							<td>{$vo[3]['num']}</td>
+							<td>{$vo[4]['num']}</td>
+							<td>{$vo[5]['num']}</td>
+							<td>{$vo[0]['num']}</td>
+                            <td>{$vo[0]['daytime']}</td>
+						</tr>
+					</volist>
+					<else/>
+					<td colspan="12" class="text-center">Oh! 暂时还没有内容!</td>
+				</notempty>
+				</tbody>
+			</table>
+			<div class="page">
+				<div>{$page}</div>
+			</div>
+		</div>
+	</div>
+</div>
+<include file="Public:footer"/>
+<block name="script">
+	<script type="text/javascript" charset="utf-8">
+		//导航高亮
+		highlight_subnav("{:U('Finance/myczmx')}");
+		function dhjsahd(url){
+			layer.open({
+			  type: 1,
+			  title: false,
+			  closeBtn: 0,
+			  area: '516px',
+			  skin: 'layui-layer-nobg', //没有背景色
+			  shadeClose: true,
+			  content: "<img src='"+url+"' >"
+			});			
+		}
+		
+	</script>
+</block>

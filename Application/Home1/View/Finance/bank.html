@@ -1,0 +1,293 @@
+<include file="Public:header" />
+	
+	
+	
+	
+	
+<div class="autobox ">
+	<div class="now">
+		<i class="fa fa-home fa-lg move mr5"></i><a href="/" class="movesay">首页</a> &gt; <a href="/finan/index.html" class="movesay">财务中心 </a> &gt; 支付设置	
+		</div>
+	<div class="main-content">
+		<style>
+	.nav-tab-list .nav-tab-hover{
+		width:100%;
+		top:60px;
+		height:50px;
+		line-height:50px;
+		background:#EAEDF4;
+		position:absolute;
+		box-sizing:content-box;
+		z-index:1;
+		transition:all 0.5s;
+		-webkit-transition:all 0.5s;
+		display:none;
+	}
+</style>
+<script type="text/javascript">
+	$(function () {
+		(function () {
+			var tab   = $('.nav-tab-list dd');
+			var hover = $('.nav-tab-hover');
+			var pos   = 0;
+			tab.each(function (index) {
+				var $this = $(this);
+				if ($this.hasClass('active')) {
+					pos = index;
+				}
+				$this.hover(function () {
+					_moveTo(index);
+				}, function () {
+					_moveTo(pos);
+				});
+			});
+			_moveTo(pos);
+			$('.nav-tab-hover').show();
+			function _moveTo(index) {
+				hover.css("top", 60 + 50 * index);
+				tab.removeClass('active');
+				tab.eq(index).addClass('active');
+			}
+		})();
+	});
+	$(window).on('scroll resize', function () {
+		if (document.body.scrollTop < 100) {
+			$('#left-nav-bar').css("top", 0);
+		} else if (document.body.scrollTop > ($('.tag-list-content').height() - $('#left-nav-bar').height() + 100)) {
+			$('#left-nav-bar').css("top", ($('.tag-list-content').height() - $('#left-nav-bar').height()));
+		} else {
+			$('#left-nav-bar').css("top", document.body.scrollTop - 100);
+		}
+	});
+</script>
+
+
+<include file="Finance:left" />
+<style>
+	.ydt-bank{ width: 100%; float: left}
+	.banklist{  width: 100%; float: left; padding: 10px 36px;}		
+	.banklist h3{ width: 100%; font-size: 18px; border-bottom: #eee 1px solid; margin-bottom: 10px; padding-bottom: 5px;}
+	.banklist .bank_f{ width: 100%; float: left; font-size: 15px;  line-height: 45px; margin: 8px 0}
+	.banklist .bank_f .left{ width: 25%; text-align: right; }
+	.banklist .bank_f .right{ width: 74%; text-align: left; }
+	.banklist .bank_f .right input{ width: 60%; padding: 7px;  border: #eee 1px solid; border-radius: 5px;}
+	.banklist .bank_f .right img{ width: 140px; border: #eee 1px solid}
+	.btns2{ height: auto; line-height: normal}
+	.texts{ width: 60%}
+</style>
+
+		<div class="tag-list-content assets_content bg_w">
+			<div class="safe_center clear">
+				<h1>
+					<span>
+						收款设置					</span>
+				</h1>
+			</div>
+			<div class="ydt-bank">
+				<div class="banklist">
+					<h3>绑定银行卡</h3>
+					<div class="bankform">
+						<div class="bank_f">
+							<div class="left">开户姓名：</div>
+							<div class="right">{$truename}</div>
+						</div>
+						<div class="bank_f">
+							<div class="left">开户银行：</div>
+							<div class="right">
+								<select name="bank" id="bank_bank" class="texts" onChange="hjdsahd(this.value)">
+									   <volist name="UserBankType" id="vo">
+									   <option value="{$vo['title']}"  <if condition="$userbank.bank == $vo['title'] "> selected</if>>{$vo['title']}</option>
+									   </volist>
+									 </select>
+							</div>
+						</div>
+						<div class="bank_f">
+							<div class="left">开户支行：</div>
+							<div class="right"><input id="bankaddr" type="text" value="{$userbank.bankaddr}"></div>
+						</div>
+						<div class="bank_f">
+							<div class="left">银行卡号：</div>
+							<div class="right"><input id="bankcard" type="text" value="{$userbank.bankcard}"></div>
+						</div>
+						<div class="bank_f">
+							<div class="left">支付密码：</div>
+							<div class="right"><input type="password" id="bankpwd"></div>
+						</div>
+						<div class="bank_f">
+							<div class="left">&nbsp;</div>
+							<div class="right"><input type="button" value="保存" class="btns2" onClick="bank(1)"></div>
+						</div>
+					</div>
+				</div>
+				<div class="banklist">
+					<h3>绑定支付宝</h3>
+					<div class="bankform">
+						<div class="bank_f">
+							<div class="left">支付宝账号姓名：</div>
+							<div class="right">{$truename}</div>
+						</div>
+						<div class="bank_f">
+							<div class="left">上传支付宝收款码：</div>
+							<div class="right">
+							<img id="sdcard1" onclick="getElementById('inputfile1').click()" src="{$useralipay.backimg}" >
+							<input type="hidden" id="card1" name="card1" value="{$card1}">
+							</div>
+						</div>
+						<div class="bank_f">
+							<div class="left">支付宝账号：</div>
+							<div class="right"><input type="text" id="alipay" value="{$useralipay.bankcard}"></div>
+						</div>
+						<div class="bank_f">
+							<div class="left">资金密码：</div>
+							<div class="right"><input type="password" id="alipaypwd"></div>
+						</div>
+						<div class="bank_f">
+							<div class="left">&nbsp;</div>
+							<div class="right"><input type="button" value="保存" class="btns2" onClick="bank(2)"></div>
+						</div>
+					</div>
+				</div>
+				<div class="banklist">
+					<h3>绑定微信</h3>
+					<div class="bankform">
+						<div class="bank_f">
+							<div class="left">微信账号姓名：</div>
+							<div class="right">{$truename}</div>
+						</div>
+						<div class="bank_f">
+							<div class="left">上传微信收款码：</div>
+							<div class="right"><img id="sdcard2" onclick="getElementById('inputfile2').click()" src="{$userweixin.backimg}" ></div>
+							<input type="hidden" id="card2" name="card2" value="{$card2}">
+						</div>
+						<div class="bank_f">
+							<div class="left">微信账号：</div>
+							<div class="right"><input type="text" id="weixin" value="{$userweixin.bankcard}"></div>
+						</div>
+						<div class="bank_f">
+							<div class="left">资金密码：</div>
+							<div class="right"><input type="password" id="weixinpwd"></div>
+						</div>
+						<div class="bank_f">
+							<div class="left">&nbsp;</div>
+							<div class="right"><input type="button" value="保存" class="btns2" onClick="bank(3)"></div>
+						</div>
+					</div>
+				</div>
+				<ul style="display: none">
+					<li>
+						<input type="file" accept="image/gif, image/jpeg, image/jpg, image/png" id="inputfile1" style="height:0;width:0;z-index: -1; position: absolute;left: 10px;top: 5px;" value=""/>
+						<input type="file" accept="image/gif, image/jpeg, image/jpg, image/png" id="inputfile2" style="height:0;width:0;z-index: -1; position: absolute;left: 10px;top: 5px;" value=""/>
+						<input type="file" accept="image/gif, image/jpeg, image/jpg, image/png" id="inputfile3" style="height:0;width:0;z-index: -1; position: absolute;left: 10px;top: 5px;" value=""/>
+					</li>
+						<input type="hidden" id="card2" name="card2" value="{$card2}">
+				</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+				<script>
+					function bank(tpl){
+						if(tpl==1){
+							var bank = $('#bank_bank option:selected').val();
+							var bankaddr = $("#bankaddr").val();
+							var bankcard = $("#bankcard").val();
+							var bankpwd = $("#bankpwd").val();
+						}else if(tpl==2){
+							var bankcard = $("#alipay").val();
+							var bankpwd = $("#alipaypwd").val();
+							var bankimg = $("#card1").val();
+						}else if(tpl==3){
+							var bankcard = $("#weixin").val();
+							var bankpwd = $("#weixinpwd").val();
+							var bankimg = $("#card2").val();
+						}
+
+						$.post("/Finance/bankup/", {
+							bank: bank,
+							bankaddr: bankaddr,
+							bankcard: bankcard,
+							bankpwd: bankpwd,
+							type: tpl,
+							bankimg: bankimg,
+						}, function (data) {
+							if (data.status == 1) {
+								layer.msg(data.info, {icon: 1});
+								window.location = window.location.href;
+							} else {
+								$("#login_verify_up").click();
+								layer.msg(data.info, {icon: 2});
+							}
+						}, "json");
+					}
+        $("#inputfile1").change(function () {
+            //创建FormData对象
+            var data = new FormData();
+            //为FormData对象添加数据
+            $.each($('#inputfile1')[0].files, function (i, file) {
+                data.append('upload_file' + i, file);
+            });
+            //发送数据
+            $.ajax({
+                url: '/ajax/imgbank',
+                type: 'POST',
+                data: data,
+                cache: false,
+                contentType: false,		//不可缺参数
+                processData: false,		//不可缺参数
+                success: function (data) {
+                    if (data) {
+						if(data=="error"){
+							alert("请选择正确的文件类型和大小！");
+							return false;
+						}
+						$('#sdcard1').attr('src','/Upload/pay/' + data);
+						$('#card1').val(data);
+                    }
+                },
+                error: function () {
+                    alert('上传出错');
+						$('#sdcard1').attr('src','/Upload/pay/alipay.jpg');
+						$('#card1').val('');
+					//$('.set_upload_img').hide();
+                    //$(".loading").hide();	//加载失败移除加载图片
+                }
+            });
+
+        });
+        $("#inputfile2").change(function () {
+            //创建FormData对象
+            var data = new FormData();
+            //为FormData对象添加数据
+            $.each($('#inputfile2')[0].files, function (i, file) {
+                data.append('upload_file' + i, file);
+            });
+            //发送数据
+            $.ajax({
+                url: '/ajax/imgbank',
+                type: 'POST',
+                data: data,
+                cache: false,
+                contentType: false,		//不可缺参数
+                processData: false,		//不可缺参数
+                success: function (data) {
+                    if (data) {
+						if(data=="error"){
+							alert("请选择正确的文件类型和大小！");
+							return false;
+						}
+						$('#sdcard2').attr('src','/Upload/pay/' + data);
+						$('#card2').val(data);
+                    }
+                },
+                error: function () {
+                    alert('上传出错');
+						$('#sdcard2').attr('src','/Upload/pay/weixin.jpg');
+						$('#card2').val('');
+					//$('.set_upload_img').hide();
+                    //$(".loading").hide();	//加载失败移除加载图片
+                }
+            });
+
+        });
+</script>
+<include file="Public:footer" />

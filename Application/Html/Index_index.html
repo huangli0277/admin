@@ -1,0 +1,2365 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>香港XIN网交易所</title>
+<meta name="Keywords" content="香港XIN网交易所">
+<meta name="Description" content="香港XIN网交易所">
+<meta name="author" content="qq3479015851">
+<meta name="coprright" content="qq3479015851">
+<link rel="shortcut icon" href="/favicon.ico"/>
+<link rel="stylesheet" href="/qq3479015851/css/font-awesome.min.css">
+<link rel="stylesheet" href="/qq3479015851/css/style.css" id="theme"/>
+<link rel="stylesheet" href="/qq3479015851/css/common.css"/>
+<script type="text/javascript" src="/qq3479015851/js/jquery.min.js"></script>
+<script type="text/javascript" src="/qq3479015851/js/jquery.cookies.2.2.0.js"></script>
+<script type="text/javascript" src="/qq3479015851/js/layer.js"></script>
+<script type="text/javascript" src="/qq3479015851/js/posfixed.js"></script>
+<script type="text/javascript" src="/qq3479015851/js/dot.min.js"></script>
+<link rel="stylesheet" href="/qq3479015851/css/slider.css">
+<script type="text/javascript" src="/qq3479015851/js/slider.js"></script>
+</head>
+<body lang="zh-CN">
+<!--[if lt IE 10]>
+<div id="kie-bar" class="kie-bar ">
+    您现在使用的浏览器版本过低，可能会导致浏览效果和信息的缺失。 建议立即升级到
+    <a href="http://rj.baidu.com/soft/detail/14917.html" target="_blank" title="免费升级至IE8浏览器">IE 10+</a> 或
+    <a href="http://rj.baidu.com/soft/detail/14744.html" target="_blank" title="免费升级至360安全浏览器">谷歌浏览器</a> 或
+    <a href="http://rj.baidu.com/soft/detail/17451.html" target="_blank" title="免费升级至360安全浏览器">360安全浏览器</a> ，安全更放心！
+</div><![endif]-->
+<div id="qq3479015851_header" style="z-index: 999;min-width: 1200px;width:100%;" ;>
+    <div class="header">
+        <div class="header-content">
+            <ul class="trade-status">
+
+                <li style="padding: 0px 10px 0px 0px;">
+                    <i class="fa fa-home fa-lg left move mr5"></i> 
+					<span>香港新网交易所 QQ： 微信：工作时间：9：00—18:00</span>
+                </li>
+            </ul>
+            <ul class="user-status">
+				
+				<li>
+                    <i class="fa fa-user fa-lg left move mr5"></i>
+                    <a href="/finance/" id="user_top" class="move">aaaaaa1</a>
+                    <div id="mywallet_list" class="mywallet_list" style="display: none;">
+                        <div class="clear">
+                            <ul class="freeze_list">
+                                <h4>可用人民币</h4>
+                                <li style=" padding: 0;">
+                                    <a href="javascript:void(0)">
+                                        <img src="/Upload/coin/cny.png" width="18" class="left mt5 mr5">
+                                        <span class="fz_14">1000000</span></a>
+                                </li>
+                            </ul>
+                            <ul class="freeze_list">
+                                <h4>冻结人民币</h4>
+                                <li style=" padding: 0;">
+                                    <a href="javascript:void(0)">
+                                        <img src="/Upload/coin/cny.png" width="18" class="left mt5 mr5">
+                                        <span class="fz_14">0</span></a>
+                                </li>
+                            </ul>
+                            <ul class="balance_list">
+                                <h4>人民币总资产:</h4>
+                                <li style=" padding: 0;">
+                                    <a href="javascript:void(0)">
+                                        <img src="/Upload/coin/cny.png" width="18" class="left mt5 mr5 ">
+                                        <span class="fz_14">1000000</span></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mywallet_btn_box">
+                            <a href="/Finance/mycz.html" class="texts">人民币充值</a>
+                            <a href="/Finance/mytx.html" class="texts">人民币提现</a>
+                            <a href="/Finance/index.html" class="texts">财务中心</a>
+                            <a href="/User/index.html" class="texts">安全中心</a>
+                        </div>
+                        <i class="fa fa-caret-up move" style="position: absolute;top: -21px;right: 34px;font-size: 28px;"></i>
+                        <div class="nocontent"></div>
+                    </div>
+                </li>
+                <li>
+                    <a href="/Login/loginout.html" class="">退出</a>
+                </li>
+								
+				
+				
+				
+				
+				
+				
+				
+				
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="common-nav">
+    <div class="nav-bar">
+        <div class="logo" style="margin-top: 12px;">
+            <a href="/" class="xiaozhu-logo"> 
+				<img src="/Upload/public/5a559d47a7b8b.png" alt=""/>
+			</a>         
+		</div>
+        <div class="nav-content">
+            <ul class="common-nav-list">
+                <li id="index_box">
+                    <a href="/">首页</a>
+                </li>
+                <li id="trade_box">
+                    <a href="#" id="trade_top" class="darker">交易中心                    
+						<i class="fa fa-angle-down"></i> 
+					</a>
+                    
+					
+					
+					
+                   <script id="trade_list_tpl" type="text/x-dot-template">
+                        <ul id="trade-nav-tabs">
+                            {{ for(var k in it) { }}
+                            <li class="trade-tab {{? k == 0}}current{{?}}">
+                                {{=it[k]['title']}}
+                            </li>
+                            {{ } }}
+                        </ul>
+                        <div id="trade-nav-body">
+                            {{ for(var k in it) { }} {{? k == 0}}
+                            <dl style="display: block">
+                                {{??}}
+                                <dl style="display: none">
+                                    {{?}} {{ for(var kk in it[k]['data']) { }}
+                                    <dd>
+                                        <a href="/trade/index/market/{{=kk}}"><img src="/upload/coin/{{=it[k]['data'][kk]['img']}}" style="width: 18px;vertical-align: -4px;margin-right: 5px;">{{=it[k]['data'][kk]['title']}}</a>
+                                    </dd>
+                                    {{ } }}
+                                </dl>
+                                {{ } }}
+                            </dl>
+                        </div>
+                        <i class="fa fa-caret-up move" style="position: absolute;top: -21px;left: 18px;font-size: 28px;"></i>
+                        <div class="nocontent"></div>
+                    </script>
+
+                    <div id="trade_list" class="deal_list " style="left:1px;     top: 80px;">
+                    </div>
+                    </li>
+					
+					
+					
+					<li id="finance_box">
+							<a href="/Finance/index">财务中心</a>
+						</li><li id="user_box">
+							<a href="/User/index">安全中心</a>
+						</li><li id="Issue_box">
+							<a href="/Issue/index">认购中心</a>
+						</li><li id="vote_box">
+							<a href="/Vote/index">新币投票</a>
+						</li><li id="article_box">
+							<a href="/Article/index">公告中心</a>
+						</li>	
+
+						
+						
+				</ul>
+        </div>
+    </div>
+</div>
+<script>
+    $('#trade_top').hover(function () {
+        $('#trade_list').show();
+    }, function () {
+        $('#trade_list').hide();
+    });
+    $('#trade_tops').hover(function () {
+        $('#trade_lists').show();
+    }, function () {
+        $('#trade_lists').hide();
+    });
+    $('#trade_list').hover(function () {
+        $('#trade_list').show();
+    }, function () {
+        $('#trade_list').hide();
+    });
+    $('#trade_lists').hover(function () {
+        $('#trade_lists').show();
+    }, function () {
+        $('#trade_lists').hide();
+    });
+    $.post("/ajax/top_coin_menu?t=" + Math.random(), function (data) {
+        if (data) {
+            var interText = doT.template($("#trade_list_tpl").text());
+            var interTexts = doT.template($("#trade_list_tpls").text());
+            $("#trade_list").html(interText(data));
+            $("#trade_lists").html(interTexts(data));
+            var $li = $('#trade-nav-tabs > li');
+            var $lis = $('#trade-nav-tabss > li');
+            var $ul = $('#trade-nav-body > dl');
+            var $uls = $('#trade-nav-bodys > dl');
+            $li.mouseover(function () {
+                var $this = $(this);
+                var $t = $this.index();
+                $li.removeClass();
+                $this.addClass('current');
+                $ul.css('display', 'none');
+                $ul.eq($t).css('display', 'block');
+            })
+            $lis.mouseover(function () {
+                var $this = $(this);
+                var $t = $this.index();
+                $lis.removeClass();
+                $this.addClass('current');
+                $uls.css('display', 'none');
+                $uls.eq($t).css('display', 'block');
+            })
+        }
+    }, "json");
+    $('#game_top').hover(function () {
+        $('#game_list').show();
+    }, function () {
+        $('#game_list').hide();
+    });
+    $('#game_list').hover(function () {
+        $('#game_list').show();
+    }, function () {
+        $('#game_list').hide();
+    });
+    $('#user_top').hover(function () {
+        $('#mywallet_list').show();
+    }, function () {
+        $('#mywallet_list').hide();
+    });
+    $('#mywallet_list').hover(function () {
+        $('#mywallet_list').show();
+    }, function () {
+        $('#mywallet_list').hide();
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $("#qq3479015851_header").posfixed({});
+    });
+</script>
+
+<!-- top 结束  -->
+<link rel="stylesheet" href="/qq3479015851/css/index.css"/>
+<div class="banner-box"  id="banner_qq_3479015851" >
+	<div class="banner-tag-box">
+	
+		<div class="banner-tag login-banner-tag">
+				<div class="user-base">
+						<span class="user-base-sp">
+							Hi,<a href="#" target="_blank">aaaaaa1</a>
+						</span>
+					<div class="user-info-block">
+						<table>
+							<tr>
+								<td>可用 CNY</td>
+								<td>冻结</td>
+								<td>总资产</td>
+							</tr>
+							<tr>
+								<td>1000000</td>
+								<td>0</td>
+								<td>1000000</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<ul class="clearfix">
+					<div class="user-info-fina">
+						<a href="/Finance/mycz.html">CNY充值</a> <a href="/Finance/mytx.html">CNY提现</a>
+						<a href="/User/index.html" class="w82">安全中心</a>
+					</div>
+				</ul>
+				<a href="/Finance/index.html" target="_blank" class="green-link-btn">去财务中心</a>
+				<a href="/Finance/mytj.html" target="_blank" class="transparent-link-btn">
+					<i class="icon-hot-tag"></i> 推荐好友拿奖励 </a>
+			</div>
+
+	
+				
+		
+		
+		
+	</div>
+	<div id="slider_index"
+     class="slider" style="height:400px;">
+    <div class="slider-loading" data-u="loading">
+        <div class="slider-loading-a"></div>
+        <div class="slider-loading-b"></div>
+    </div>
+    <div class="slider-body" data-u="slides">
+	
+	
+		<div  onclick="window.location.href='http://jy.hltxgw.cn/'">
+				<a src="" style=""><img data-u="image" title="" alt="" src="/Upload/ad/5a540c565dacb.jpg"/>
+				</a>
+			</div><div  onclick="window.location.href='http://jy.hltxgw.cn/'">
+				<a src="" style=""><img data-u="image" title="" alt="" src="/Upload/ad/5a540c79db9d8.jpg"/>
+				</a>
+			</div><div  onclick="window.location.href='http://jy.hltxgw.cn/'">
+				<a src="" style=""><img data-u="image" title="" alt="" src="/Upload/ad/5a540c2f33a6e.jpg"/>
+				</a>
+			</div><div  onclick="window.location.href='http://jy.hltxgw.cn'">
+				<a src="" style=""><img data-u="image" title="" alt="" src="/Upload/ad/5a540c1f70a99.jpg"/>
+				</a>
+			</div>	
+		
+    </div>
+			
+			
+        <div id="slider-body-navigator_index"
+         class="sbn-3" data-u="navigator" style="position: absolute;
+        bottom: 16px;" data-autocenter="1">
+        <div data-u="prototype" style=""></div>
+    </div>
+            <span id="slider-body-arrow-l_index" data-u="arrowleft"
+          class="slider-body-arrowleft-1" data-autocenter="2"></span>
+    <span id="slider-body-arrow-r_index" data-u="arrowright"
+          class="slider-body-arrowright-1" data-autocenter="2"></span>
+    </div>
+<textarea class="mv-hide" style="display: none;">
+    slider_run("slider_index", [{"$Duration":1200,"x":0.3,"$SlideOut":true,"$Easing":{},"$Opacity":2}]);
+</textarea></div>
+<div class="tradeBox hg40" style=" width: 1200px;margin: 0 auto;   background: #FFF;">
+	<div class="slideHd hg40" style="width: 1200px;margin: 0 auto;background: #FFF;">
+		<ul class="active hg40  trade_qu_list" style="height: 40px;line-height: 40px;">
+						
+						
+				<li  class="trade_moshi trade_qu_pai   
+					current					" data="0" onclick="trade_qu(this)">
+					<a> 人民币交易区 </a></li>				
+
+				
+				
+				
+					</ul>
+	</div>
+</div>
+<div class="price_today">
+	<div class="autobox">
+		<ul class="price_today_ull">
+			<li data-sort="0" style="cursor: default;">交易市场</li>
+			<li class="click-sort" data-sort="1" data-flaglist="0" data-toggle="0">最新成交价 <i
+					class="cagret cagret-down"></i> <i class="cagret cagret-up"></i>
+			</li>
+			<li class="click-sort" data-sort="2" data-flaglist="0" data-toggle="0">买一价 <i
+					class="cagret cagret-down"></i> <i class="cagret cagret-up"></i>
+			</li>
+			<li class="click-sort" data-sort="3" data-flaglist="0" data-toggle="0">卖一价 <i
+					class="cagret cagret-down"></i> <i class="cagret cagret-up"></i>
+			</li>
+			<li class="click-sort" data-sort="6" data-flaglist="0" data-toggle="0">24H成交量 <i
+					class="cagret cagret-down"></i> <i class="cagret cagret-up"></i>
+			</li>
+			<li class="click-sort" data-sort="4" data-flaglist="0" data-toggle="0">24H成交额				
+			<i class="cagret cagret-down"></i> <i class="cagret cagret-up"></i>
+			</li>
+			<li class="click-sort" data-sort="7" data-flaglist="0" data-toggle="0">24H涨跌 <i
+					class="cagret cagret-down"></i> <i class="cagret cagret-up"></i>
+			</li>
+			<li data-sort="0">价格趋势(3日)</li>
+			<li data-sort="0" style="width: 150px; text-align: center; text-indent: 0.5em;">操作</li>
+		</ul>
+	</div>
+</div>
+
+<ul class="price_today_ul" id="price_today_ul" style="margin: 0px auto;width: 1200px;background: #FFF;box-shadow: 2px 2px 4px #D7DAE0;">
+
+</ul>
+<script src="/qq3479015851/js/jquery.flot.js"></script>
+<script>
+	$('.price_today_ull > .click-sort').each(function () {
+		$(this).click(function () {
+			click_sortList(this);
+		})
+	})
+	function allcoin_callback(priceTmp) {
+		for (var i in priceTmp) {
+			var c = priceTmp[i][8];
+			if (typeof (trends[c]['data']) && typeof (trends[c]['data']) != 'null') {
+				if (typeof (trends[c]) != 'undefined' && typeof (trends[c]['data']) != 'undefined') {
+					$.plot($("#" + c + "_plot"), [{shadowSize: 0, data: trends[c]['data']}], {
+						grid: {borderWidth: 0},
+						xaxis: {mode: "time", ticks: false},
+						yaxis: {tickDecimals: 0, ticks: false},
+						colors: ['#f99f83']
+					});
+				}
+			}
+		}
+	}
+	function click_sortList(sortdata) {
+		var a = $(sortdata).attr('data-toggle');
+		var b = $(sortdata).attr('data-sort');
+		$(".price_today_ull > li").find('.cagret-up').css('border-bottom-color', '#848484');
+		$(".price_today_ull > li").find('.cagret-down').css('border-top-color', '#848484');
+		$(".price_today_ull > li").attr('data-flaglist', 0).attr('data-toggle', 0);
+		$(".price_today_ull > li").css('color', '');
+		$(sortdata).css('color', '#1a81d6');
+		if (a == 0) {
+			priceTmp = priceTmp.sort(sortcoinList('dec', b));
+			$(sortdata).find('.cagret-down').css('border-top-color', '#1a81d6');
+			$(sortdata).find('.cagret-up').css('border-bottom-color', '#848484');
+			$(sortdata).attr('data-flaglist', 1).attr('data-toggle', 1)
+		}
+		else if (a == 1) {
+			$(sortdata).attr('data-toggle', 0).attr('data-flaglist', 2);
+			;
+			$(sortdata).find('.cagret-up').css('border-bottom-color', '#1a81d6');
+			$(sortdata).find('.cagret-down').css('border-top-color', '#848484');
+			priceTmp = priceTmp.sort(sortcoinList('asc', b));
+		}
+		renderPage(priceTmp);
+		change_line_bg('price_today_ul', 'li');
+		allcoin_callback(priceTmp);
+	}
+	function trends() {
+		$.getJSON('/ajax/index_b_trends?t=' + rd(), function (d) {
+			trends = d;
+			allcoin();
+		});
+	}
+	function allcoin(cb) {
+		var trade_qu_id = $('.trade_qu_list .current').attr('data');
+		$.get('/ajax/allcoin_a/id/' + trade_qu_id + '?t=' + rd(), cb ? cb : function (data) {
+			var d;
+			if (data.status == 1) {
+				d = data.url;
+			}
+			ALLCOIN  = d;
+			var t    = 0;
+			var img  = '';
+			priceTmp = [];
+			for (var x in d) {
+				if (typeof(trends[x]) != 'undefined' && parseFloat(trends[x]['yprice']) > 0) {
+					rise1 = (((parseFloat(d[x][4]) + parseFloat(d[x][5])) / 2 - parseFloat(trends[x]['yprice'])) * 100) / parseFloat(trends[x]['yprice']);
+					rise1 = rise1.toFixed(2);
+				} else {
+					rise1 = 0;
+				}
+				img = d[x].pop();
+				d[x].push(rise1);
+				d[x].push(x);
+				d[x].push(img);
+				priceTmp.push(d[x]);
+			}
+			$('.price_today_ull > .click-sort').each(function () {
+				var listId = $(this).attr('data-sort');
+				if ($(this).attr('data-flaglist') == 1 && $(this).attr('data-sort') !== 0) {
+					priceTmp = priceTmp.sort(sortcoinList('dec', listId))
+				} else if ($(this).attr('data-flaglist') == 2 && $(this).attr('data-sort') !== 0) {
+					priceTmp = priceTmp.sort(sortcoinList('asc', listId))
+				}
+			});
+			renderPage(priceTmp);
+			allcoin_callback(priceTmp);
+			change_line_bg('price_today_ul', 'li');
+			t = setTimeout('allcoin()', 5000);
+		}, 'json');
+	}
+	function rd() {
+		return Math.random()
+	}
+	function renderPage(ary) {
+		var html = '';
+		for (var i in ary) {
+			var coinfinance = 0;
+			if (typeof FINANCE == 'object') coinfinance = parseFloat(FINANCE.data[ary[i][8] + '_balance']);
+			html += '<li><dl class="autobox clear"><dt><a href="/trade/index/market/' + ary[i][8] + '/">' +
+					'<img src="/upload/coin/' + ary[i][9] + '" style="vertical-align: middle;margin-right: 5px;width: 19px;margin-left: 12px;">' + ary[i][0] + '</a></dt><dd class="orange" style="text-indent: 1.6em;">' + ary[i][1] + '</dd><dd style="text-indent: 1.6rem;">' + ary[i][2] + '</dd><dd style="text-indent: 1.6rem;">' + ary[i][3] + '</dd><dd class="w142" style="    text-indent: 1.6rem;">' + formatCount(ary[i][6]) + '</dd><dd class="w142" style="    text-indent: 2.5rem;">' + formatCount(ary[i][4]) + '</dd><dd class="w142 ' + (ary[i][7] >= 0 ? 'buy' : 'sell') + '" style="    text-indent: 2.0rem;">' + (parseFloat(ary[i][7]) < 0 ? '' : '+') + ((parseFloat(ary[i][7]) < 0.01 && parseFloat(ary[i][7]) > -0.01) ? "0.00" : (parseFloat(ary[i][7])).toFixed(2)) + '%</dd><dd id="' + ary[i][8] + '_plot"  style="width:150px;height:35px;"></dd><dd class="w102" style="width:150px;text-align: center;text-indent: 0.5em;"><input type="button" value=去交易 class="btns2" onclick="top.location=\'/trade/index/market/' + ary[i][8] + '/\'" /></dd></dl></li>'
+		}
+		$('#price_today_ul').html(html);
+	}
+	function formatCount(count) {
+		var countokuu = (count / 100000000).toFixed(3)
+		var countwan  = (count / 10000).toFixed(3)
+		if (count > 100000000)
+			return countokuu.substring(0, countokuu.lastIndexOf('.') + 3) + '亿'
+		if (count > 10000)
+			return countwan.substring(0, countwan.lastIndexOf('.') + 3) + '万'
+		else
+			return count
+	}
+	function change_line_bg(id, tag, nobg) {
+		var oCoin_list = $('#' + id);
+		var oC_li      = oCoin_list.find(tag);
+		var oInp       = oCoin_list.find('input');
+		var oldCol     = null;
+		var newCol     = null;
+		if (!nobg) {
+			for (var i = 0; i < oC_li.length; i++) {
+				oC_li.eq(i).css('background-color', i % 2 ? '#f8f8f8' : '#fff');
+			}
+		}
+		oCoin_list.find(tag).hover(function () {
+			oldCol = $(this).css('backgroundColor');
+			$(this).css('background-color', '#eaedf4');
+		}, function () {
+			$(this).css('background-color', oldCol);
+		})
+	}
+	function sortcoinList(order, sortBy) {
+		var ordAlpah = (order == 'asc') ? '>' : '<';
+		var sortFun  = new Function('a', 'b', 'return parseFloat(a[' + sortBy + '])' + ordAlpah + 'parseFloat(b[' + sortBy + '])? 1:-1');
+		return sortFun;
+	}
+	function trade_qu(o){
+		$('.trade_qu_pai').removeClass('current');
+		$(o).addClass('current');
+		allcoin();
+	}
+	trends();
+</script>
+
+
+<style>
+
+
+
+.container-full {
+    min-width: 1170px !important;
+}
+
+@media (min-width: 1200px)
+.container {
+    width: 1170px;
+}
+@media (min-width: 992px)
+.container {
+    width: 970px;
+}
+@media (min-width: 768px)
+.container {
+    width: 750px;
+}
+
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
+
+.col-xs-4 {
+    width: 33.33333333%;
+	float:left;
+	position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
+
+.col-xs-12 {
+    width: 100%;
+	float:left;
+}
+
+.text-danger {
+    color: #da2e22 !important;
+}
+.text-danger {
+    color: #a94442;
+}
+h3, .h3 {
+    font-size: 21px;
+}
+
+h1, .h1, h2, .h2, h3, .h3 {
+    margin-top: 17px;
+    margin-bottom: 8.5px;
+}
+
+
+/*****about*******/
+.about {
+	position: relative;
+}
+
+.about-bg {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	padding-bottom: 105px;
+	background: #fff;
+}
+
+.about-bg div {
+	background: #eeebeb;
+	width: 100%;
+	height: 572px;
+}
+
+.about-top {
+	padding-top: 60px;
+	height: 185px;
+}
+
+.about .about-item {
+	
+}
+
+.about .about-title {
+	font-weight: bold;
+	font-size: 25px;
+}
+
+.about .about-item p {
+	line-height: 2em;
+}
+
+.about .about-con-box {
+	margin: 60px auto;
+}
+
+.about .about-con {
+	background: #fff;
+	padding-left: 30px;
+	padding-right: 30px;
+	padding-bottom: 50px;
+	padding-top: 65px;
+	border: #d1d1d1 solid 1px;
+	border-top: 5px solid #c83935;
+	min-height: 450px;
+}
+
+.about .about-img {
+	margin-top: 30px;
+	height: 12em;
+	width: 13em;
+	display: inline-block;
+}
+
+.about .security {
+	background: url("/qq3479015851/images/indexplist.png") no-repeat 8px 0;
+}
+
+.about .professional {
+	background: url("/qq3479015851/images/indexplist.png") no-repeat -200px 0px;
+}
+
+.about .quick {
+	margin-left: 25px;
+	background: url("/qq3479015851/images/indexplist.png") no-repeat -431px 0px;
+}
+
+
+
+
+
+
+
+
+
+
+</style>
+
+
+
+
+<div class="container-full about index">
+	<div class="about-bg">
+		<div></div>
+	</div>
+	<div class="container text-center">
+		<div class="about-con-box clearfix">
+			<div class="col-xs-4 about-item">
+				<div class="col-xs-12 about-con">
+					<h3 class="text-danger about-title">安全</h3>
+					<span class="about-img security"></span>
+					<p class="text-left">SSL、冷钱包机制、多重加密存储等银行级安全技术，流程化、责任化的多重审核管理体系。</p>
+				</div>
+			</div>
+			<div class="col-xs-4 about-item">
+				<div class="col-xs-12 about-con">
+					<h3 class="text-danger about-title">便捷</h3>
+					<span class="about-img quick"></span>
+					<p class="text-left">界面简约易懂，操作方便。系统稳定高效，速度响应快。手机电脑等客户端，随时随地均可交易。</p>
+				</div>
+			</div>
+			<div class="col-xs-4 about-item">
+				<div class="col-xs-12 about-con">
+					<h3 class="text-danger about-title">平等</h3>
+					<span class="about-img professional"></span>
+					<p class="text-left">交易有前景的投资币种，减少投资风险；致力于数字资产落地化，惠及更多线下交易者，享有平等投资机会。</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<style>
+
+.news {
+	padding: 55px 0;
+	background: #fff;
+	border-top: 1px solid #eeebeb;
+}
+
+.news-items {
+	width: 345px;
+	height: 730px;
+	border: 1px solid #f6f5f5;
+	float: left;
+	transition: width 0.3s;
+}
+
+.news-items.active {
+	border: 1px solid #ec9690;
+	width: 450px;
+}
+
+.news-items.active .news-item-hd {
+	background: url("/qq3479015851/images/news-hd.png") no-repeat 50% 50%;
+	color: #fff;
+}
+
+.news-item-hd {
+	height: 182px;
+	background: #f9f9fa;
+	padding-top: 22px;
+}
+
+.news-item-hd i {
+	width: 59px;
+	height: 62px;
+	background: url("/qq3479015851/images/indexplist.png") no-repeat;
+	display: inline-block;
+}
+
+.news-item-hd i.notice-icon {
+	background-position: 0 -1031px;
+}
+
+.news-item-hd i.topic-icon {
+	background-position: -140px -1031px;
+}
+
+.news-item-hd i.reports-icon {
+	background-position: -270px -1031px;
+}
+
+.news-items.active .news-item-hd i {
+	background-position-y: -1131px;
+}
+
+.news-item-hd p.hd1 {
+	font-size: 22px;
+	font-weight: bold;
+	color: #333;
+}
+
+.news-items.active .news-item-hd p.hd1 {
+	color: #fff;
+}
+
+.news-item-hd p.hd2 {
+	font-size: 16px;
+	color: #999;
+}
+
+.news-items.active .news-item-hd p.hd2 {
+	color: #fff;
+}
+
+.news-item-cn {
+	padding: 0 30px;
+}
+
+.news .media {
+	margin-top: 37px;
+	display: inline-block;
+	position: relative;
+	width: 100%;
+}
+
+.news .media:hover {
+	text-decoration: none;
+}
+
+.news .media-left {
+	position: absolute;
+	right: -10px;
+}
+
+.news-items.active .media-left img {
+	opacity: 1;
+	filter: alpha(opacity = 100);
+}
+
+.news .media-left img {
+	width: 88px;
+	height: 77px;
+	opacity: 0;
+	filter: alpha(opacity = 0);
+	transition: opacity 1s;
+}
+
+.news .media-heading {
+	color: #333;
+	font-size: 16px;
+	margin-bottom: 10px;
+}
+
+.news .media-body {
+	color: #999;
+	font-size: 14px;
+	line-height: 1.6;
+	width: 280px;
+	height: 88px;
+}
+
+
+
+</style>
+
+
+
+<div style="min-height:841px;" class="container-full index news">
+	<div class="container">
+		<div class="news-items active" style="width: 450px;">
+			<div class="news-item-hd text-center">
+				<i class="notice-icon"></i>
+				<p class="hd1">官方公告</p>
+				<p class="hd2">掌握各类活动资讯</p>
+			</div>
+			<div class="news-item-cn">
+				
+									
+			</div>
+		</div>
+		<div class="news-items" style="width: 345px;">
+			<div class="news-item-hd text-center">
+				<i class="topic-icon"></i>
+				<p class="hd1">热门话题</p>
+				<p class="hd2">最新最热的话题讨论</p>
+			</div>
+			<div class="news-item-cn">
+				
+				<a class="media" href="/Article/detail/id/210.html">
+						<div class="media-left">
+							<img src="/qq3479015851/default/defaultImg.jpg">
+						</div>
+						<div class="media-body">
+							<h4 class="media-heading">外媒称中国采取行动清退比特币挖矿企业：电力消耗过高</h4>
+							
+	据英国《金融时报》10日报道，中国正采取行动取缔国内比特币挖矿产业，原因是...
+						</div>
+					</a><a class="media" href="/Article/detail/id/209.html">
+						<div class="media-left">
+							<img src="/qq3479015851/default/defaultImg.jpg">
+						</div>
+						<div class="media-body">
+							<h4 class="media-heading"> 中国可能会限制比特币挖矿，降低该产业的地理集中度　　</h4>
+							
+	
+
+
+
+
+
+	　　中国央行希望缩小国内比特币矿业规模
+
+
+
+
+...
+						</div>
+					</a><a class="media" href="/Article/detail/id/208.html">
+						<div class="media-left">
+							<img src="/qq3479015851/default/defaultImg.jpg">
+						</div>
+						<div class="media-body">
+							<h4 class="media-heading">韩国银行就与数字货币交易所关系问题面临审查</h4>
+							
+	
+
+
+
+
+	　　
+
+
+
+
+	　　韩国六家未披露名称的商业银行因...
+						</div>
+					</a><a class="media" href="/Article/detail/id/207.html">
+						<div class="media-left">
+							<img src="/qq3479015851/default/defaultImg.jpg">
+						</div>
+						<div class="media-body">
+							<h4 class="media-heading">Blockchain公司创始人：明年比特币将成央行储备资产</h4>
+							
+
+	　　北京时间19日早间CNBC称，加密货币钱包区块链公司(Blockc...
+						</div>
+					</a>				
+			</div>
+		</div>
+		<div class="news-items" style="width: 345px;">
+			<div class="news-item-hd text-center">
+				<i class="reports-icon"></i>
+				<p class="hd1">媒体报道</p>
+				<p class="hd2">多方面了解行业动态</p>
+			</div>
+			<div class="news-item-cn">
+				
+				<a class="media" href="/Article/detail/id/144.html">
+						<div class="media-left">
+							<img src="/qq3479015851/default/defaultImg.jpg">
+						</div>
+						<div class="media-body">
+							<h4 class="media-heading">监管沙箱对我国金融科技的影响 ——从国别角度谈起</h4>
+							
+	
+
+
+
+	
+		近几年来，互联网科技的兴起从各个方面改变及影响着金...
+						</div>
+					</a><a class="media" href="/Article/detail/id/143.html">
+						<div class="media-left">
+							<img src="/qq3479015851/default/defaultImg.jpg">
+						</div>
+						<div class="media-body">
+							<h4 class="media-heading">必不可少：区块链如何重塑科技巨头思科</h4>
+							
+	
+
+
+
+	
+		思科正在改变。
+
+ 
+
+这家以提供商业计算机硬...
+						</div>
+					</a><a class="media" href="/Article/detail/id/142.html">
+						<div class="media-left">
+							<img src="/qq3479015851/default/defaultImg.jpg">
+						</div>
+						<div class="media-body">
+							<h4 class="media-heading">必不可少：区块链如何重塑科技巨头思科</h4>
+							
+	
+
+
+
+	
+		思科正在改变。
+
+ 
+
+这家以提供商业计算机硬...
+						</div>
+					</a><a class="media" href="/Article/detail/id/141.html">
+						<div class="media-left">
+							<img src="/qq3479015851/default/defaultImg.jpg">
+						</div>
+						<div class="media-body">
+							<h4 class="media-heading">总市值超过20亿美元！“更快、更多”的莱特币会超越比特币吗</h4>
+							
+	
+
+
+
+	
+		过去一周，全球数字资产社区惶惶不安。萧条和崩盘的阴...
+						</div>
+					</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script language="javascript">
+	$(".news-items").mouseover(function(a) {
+        $(".news-items").removeClass("active");
+		$(".news-items").stop().animate({
+            width: "345px"
+        }, 50); 
+		$(this).stop().animate({
+            width: "450px"
+        }, 50);
+		$(this).addClass("active");
+	});
+</script>
+
+
+
+<style>
+
+.contact-qq3479015851 {
+	padding-top: 60px;
+	padding-bottom: 60px;
+	border-top: #eeebeb solid 1px;
+	background: url("/qq3479015851/images/callinfo-bg.png") no-repeat 50% 50%;
+}
+
+.contact-con-qq3479015851 {
+	border: #edecec 1px solid;
+	box-shadow: 0 0 5px #eeebeb;
+	background-color: #fff;
+	position: relative;
+}
+
+.contact-con-qq3479015851 .top-split {
+	border-top: #c83935 5px solid;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 1;
+}
+
+.contact-con-qq3479015851 .icon-iten {
+	padding-bottom: 20px;
+}
+
+.contact-con-qq3479015851 .icon-iten .icon {
+	width: 107px;
+	height: 107px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.contact-con-qq3479015851 .icon-iten .icon.qq {
+	background: url("/qq3479015851/images/indexplist.png") no-repeat 0 -450px;
+}
+
+.contact-con-qq3479015851 .icon-iten .icon.phone {
+	background: url("/qq3479015851/images/indexplist.png") no-repeat -198px -450px;
+	margin-top:0px;
+}
+
+.contact-con-qq3479015851 .icon-iten .icon.app {
+	background: url("/qq3479015851/images/indexplist.png") no-repeat -399px -450px;
+}
+
+.contact-con-qq3479015851 .icon-iten .icon.weibo {
+	background: url("/qq3479015851/images/indexplist.png") no-repeat 0 -640px;
+}
+
+.contact-con-qq3479015851 .icon-iten .icon.wechat {
+	background: url("/qq3479015851/images/indexplist.png") no-repeat -198px -640px;
+}
+
+.contact-con-qq3479015851 .icon-iten .icon.email {
+	background: url("/qq3479015851/images/indexplist.png") no-repeat -399px -640px;
+}
+
+.contact-con-qq3479015851 .contact-item {
+	padding-bottom: 40px;
+	border-right: #edecec 1px solid;
+	padding-top: 40px;
+	background-color: #fff;
+	height:296.5px;
+}
+
+.contact-con-qq3479015851 .contact-item ul li {
+	margin-top: 5px;
+	list-style: none;
+	position: relative;
+}
+
+.contact-con-qq3479015851 .contact-item:last-child {
+	border-right: #fff 1px solid;
+}
+
+.contact-con-qq3479015851 .contact-item ul {
+	display: inline-block;
+	font-size: 14px;
+	padding-left: 0;
+}
+
+.contact-con-qq3479015851 .contact-item ul a {
+	color: #333333;
+}
+
+.contact-con-qq3479015851 .contact-item:hover .dialog_qq3479015851 {
+	
+	opacity: 1;
+	filter: alpha(opacity = 100);
+}
+
+.contact-con-qq3479015851 .contact-item .dialog_qq3479015851 {
+	position:absolute;
+	top:0px;
+	width: 191px;
+	height: 266px;
+	background: #c83935;
+	opacity: 0;
+	filter: alpha(opacity = 0);
+	transition: opacity .5s;
+	padding-top:40px;
+	text-decoration: none;
+}
+
+.contact-con-qq3479015851 .contact-item .dialog_qq3479015851:hover {
+	
+	text-decoration: none;
+	
+}
+
+.contact-con-qq3479015851 .contact-item img {
+	width: 135px;
+	height: 135px;
+	border-radius: 10px;
+}
+
+.contact-con-qq3479015851 .contact-item .dialog_qq3479015851 p {
+	color: #fff;
+	padding-top: 30px;
+}
+
+.contact-con-qq3479015851 .contact-item:hover .dialog_qq3479015851_1 {
+	
+	opacity: 1;
+	filter: alpha(opacity = 100);
+}
+
+.contact-con-qq3479015851 .contact-item .dialog_qq3479015851_1 {
+	position:absolute;
+	top:0px;
+	left:380px;
+	width: 191px;
+	height: 266px;
+	background: #c83935;
+	opacity: 0;
+	filter: alpha(opacity = 0);
+	transition: opacity .5s;
+	
+	text-decoration: none;
+}
+
+.contact-con-qq3479015851 .contact-item .dialog_qq3479015851_1 p {
+	color: #fff;
+	padding-top: 30px;
+}
+
+
+.contact-con-qq3479015851 p {
+	color: #999;
+	font-size: 14px;
+}
+
+.contact-con-qq3479015851 i.dots {
+	width: 5px;
+	height: 5px;
+	background: #999;
+	position: absolute;
+	top: 7px;
+	left: -10px;
+	border-radius: 5px;
+}
+
+.col-xs-2 {
+    width: 16.66666667%;
+	float:left;
+}
+
+
+.container-qq3479015851 {
+    width: 1170px;
+    max-width: none !important;
+}
+
+.container-full-qq3479015851 {
+    min-width: 1170px !important;
+}
+
+@media (min-width: 1200px)
+.container-qq3479015851 {
+    width: 1170px;
+}
+@media (min-width: 992px)
+.container-qq3479015851 {
+    width: 970px;
+}
+@media (min-width: 768px)
+.container-qq3479015851 {
+    width: 750px;
+}
+
+.container-qq3479015851 {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
+</style>
+
+
+
+
+<div class="container-full-qq3479015851 index contact-qq3479015851 ">
+		<div style="height:296.5px;" class="container-qq3479015851">
+			<div class="contact-con-qq3479015851 text-center ">
+				<div class="top-split"></div>
+				
+				
+				
+				<div class="col-xs-2 contact-item">
+					<div class="icon-iten">
+						<a href="http://wpa.qq.com/msgrd?v=3&uin=3391168307&site=qq&menu=yes" target="_black">
+							<i class="icon qq"></i>
+						</a>
+					</div>
+					<p>官方QQ</p>
+					<ul>
+						<li>
+							<a href="http://wpa.qq.com/msgrd?v=3&uin=3391168307&site=qq&menu=yes" target="_black">3391168307</a>
+						</li>
+					</ul>
+				</div>
+				
+				
+				
+				
+				
+				<div class="col-xs-2 contact-item">
+					<div class="icon-iten">
+						<i class="icon phone"></i>
+					</div>
+					<p>QQ客服</p>
+					<ul>
+						<li>3391168307</li>
+					</ul>
+				</div>
+				<div class="col-xs-2 contact-item">
+					<div class="icon-iten">
+						<i class="icon app"></i>
+					</div>
+					<p>APP下载</p>
+					<ul>
+						<li>安卓、IOS</li>
+					</ul>
+					<a class="dialog_qq3479015851_1" target="_black" href="#">
+						<img style="padding-top:40px;" alt="wap端" src="http://www.hkbtc123.com/ewm.png">
+						<p>安卓、IOS</p>
+					</a>
+				</div>
+				<div class="col-xs-2 contact-item">
+					<div class="icon-iten">
+						<a href="#" target="_block">
+							<i class="icon weibo"></i>
+						</a>
+					</div>
+					<p>手机访问</p>
+					<ul>
+						<li>
+							<a href="XIN" target="_block"> @香港XIN网交易所网</a>
+						</li>
+					</ul>
+					<div class="dialog_qq3479015851">
+						<img alt="手机版二维码" src="/Upload/public/5a605d6086160.png">
+						<p>扫描直接访问手机版</p>
+					</div>
+				</div>
+				<div class="col-xs-2 contact-item">
+					<div class="icon-iten">
+						<i class="icon wechat"></i>
+					</div>
+					<p>官方微信</p>
+					<ul>
+						<li>XIN官方</li>
+					</ul>
+					<div class="dialog_qq3479015851">
+						<img alt="微信二维码" src="/Upload/public/5a605d5917ecf.png">
+						<p>扫描关注官方微信</p>
+					</div>
+				</div>
+				<div class="col-xs-2 contact-item">
+					<div class="icon-iten">
+						<a target="_blank" href="javascript:void(0)">
+							<i class="icon qq"></i>
+						</a>
+					</div>
+					<p>官方QQ群</p>
+					<ul>
+						
+						<li>
+								<i class="dots"></i><a href="#">859658053</a>
+							</li>						
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div style="height:0;width:100%;clear:both;"></div>
+
+	
+
+
+
+<style>
+
+.content {width:1100px;overflow:hidden;margin:0px auto 0;}
+.content_l {width:665px;overflow:hidden;float:left;}
+.content_r {width:310px;overflow:hidden;float:right;}
+.title {font-size:16px;height:32px;line-height:32px;}
+/*links*/
+#links {width:1100px;height:54px;overflow:hidden;float:left;margin:0 10px;}
+#links ul {height:42px;padding-top:11px;overflow:hidden;width:2000px;}
+#links li {float:left;width:90px;margin:0 10px;display:inline;}
+#links img {display:block;width:90px;height:32px;overflow:hidden;}
+#links a:hover img {opacity:0.8;filter:alpha(opacity=80);}
+
+.slideContainer{position: relative;z-index:0;}
+
+</style>	
+
+	
+<div class="index_news mt20 index_news1 "   style="    margin-bottom: -20px;">
+	<ul class="index_media_ul index_media_ul4 ml35">
+		<li class="index_media_li active">合作伙伴</li>
+	</ul>
+
+	
+	
+	
+<div class="content links">
+    <div class="links_list">
+        <div id="links">
+            <ul id="slideContainer" class="slideContainer" >
+                
+				
+				
+	<li>
+			<a href="https://www.sosobtc.com/" alt="sosobtc" title="sosobtc" target="_blank" >
+				<img src="/Upload/link/5941179826217.png">
+			</a>
+		</li><li>
+			<a href="https://bittrex.com/" alt="B网" title="B网" target="_blank" >
+				<img src="/Upload/link/5941187166fb0.png">
+			</a>
+		</li><li>
+			<a href="https://poloniex.com/" alt="P网" title="P网" target="_blank" >
+				<img src="/Upload/link/594118c2079cf.png">
+			</a>
+		</li><li>
+			<a href="https://www.btc100.com/" alt="比特币100" title="比特币100" target="_blank" >
+				<img src="/Upload/link/593d1360aba52.png">
+			</a>
+		</li><li>
+			<a href="http://www.ybcoin.com/" alt="元宝网" title="元宝网" target="_blank" >
+				<img src="/Upload/link/594115e557b8c.png">
+			</a>
+		</li><li>
+			<a href="http://www.wanbizu.com/" alt="玩币族" title="玩币族" target="_blank" >
+				<img src="/Upload/link/593d123fca29a.png">
+			</a>
+		</li><li>
+			<a href="http://bitkan.com/price" alt="币看网王烁" title="币看网王烁" target="_blank" >
+				<img src="/Upload/link/59411631c2888.png">
+			</a>
+		</li><li>
+			<a href="http://www.bitcoin86.com/" alt="比特币资讯网" title="比特币资讯网" target="_blank" >
+				<img src="/Upload/link/5941165c9c62e.png">
+			</a>
+		</li><li>
+			<a href="https://www.okcoin.cn" alt="币行" title="币行" target="_blank" >
+				<img src="/Upload/link/59411573763d4.png">
+			</a>
+		</li><li>
+			<a href="http://www.chinabtcltc.com/" alt="虚拟币信息中文网" title="虚拟币信息中文网" target="_blank" >
+				<img src="/Upload/link/594116ee57b8c.png">
+			</a>
+		</li>	
+				
+				
+            </ul>
+        </div>
+    </div>  
+</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</div>
+
+
+
+<script type="text/javascript">
+
+//c的值为每次滚动数
+                var slideContainer = $('#slideContainer'), c = 1, s_w = 110 * c, counts_l = 0, counts_r = 0, maxCounts = slideContainer.find('li').size() - 0, gameOver = true, slideCounts = 10, sTimer;
+
+                function link_next_event() {
+                    if (gameOver) {
+                        gameOver = false;
+                        counts_r++;
+                        slideContainer.animate({
+                            left: '-=' + s_w
+                        }, 500, function() {
+                            gameOver = true;
+                            slideContainer.animate({
+                                left: '+=' + s_w
+                            }, 0);
+                            slideContainer.find('li:lt(' + c + ')').clone().appendTo(slideContainer);
+                            slideContainer.find('li:lt(' + c + ')').remove();
+                        });
+                    }
+                }
+
+                lastCLiHtml();
+                slideContainer.find('li:gt(' + (maxCounts - 1) + ')').remove();
+                function lastCLiHtml() {
+                    var html = '';
+                    slideContainer.find('li:gt(' + (maxCounts - c - 1) + ')').each(function() {
+                        html += '<li>' + $(this).html() + '</li>';
+                    });
+                    slideContainer.html(html + slideContainer.html()).css({
+                        'margin-left': -s_w + 'px'
+                    });
+                }
+
+                var l_hover = false, m_hover = false, r_hover = false;
+                $('#links').on({
+                    'mouseover': function() {
+                        m_hover = true;
+                        clearInterval(sTimer);
+                    },
+                    'mouseout': function() {
+                        m_hover = false;
+                        isStartGo();
+                    }
+                });
+
+
+                setInverterTimer();
+                function setInverterTimer() {
+                    clearInterval(sTimer);
+                    sTimer = setInterval(function() {
+                        link_next_event();
+                    }, 2000);
+                }
+
+                function isStartGo() {
+                    var st = setTimeout(function() {
+                        if (!l_hover && !m_hover && !r_hover) {
+                            setInverterTimer();
+                        }
+                    }, 1000);
+                }
+  
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+	$('#index_box').addClass('active');
+</script>
+
+
+<script src="/Public/Home/js/canva.index.js?version=201612131123"></script>
+
+
+<style>
+
+
+.modal-open {
+    overflow: hidden;
+}
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10000;
+    display: none;
+    overflow: hidden;
+    -webkit-overflow-scrolling: touch;
+    outline: 0;
+}
+.modal.fade .modal-dialog {
+    -webkit-transition: -webkit-transform .3s ease-out;
+    -o-transition:      -o-transform .3s ease-out;
+    transition:         transform .3s ease-out;
+    -webkit-transform: translate(0, -25%);
+    -ms-transform: translate(0, -25%);
+    -o-transform: translate(0, -25%);
+    transform: translate(0, -25%);
+}
+.modal.in .modal-dialog {
+    -webkit-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    -o-transform: translate(0, 0);
+    transform: translate(0, 10%);
+    /*transform: translate(0, 0);*/
+}
+.modal-open .modal {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.modal-dialog {
+    position: relative;
+    width: auto;
+    margin: 10px;
+}
+.modal-content {
+    position: relative;
+    background-color: #fff;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 1px solid #999;
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: 6px;
+    outline: 0;
+    -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+    box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+}
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1040;
+    background-color: #000;
+}
+.modal-backdrop.fade {
+    filter: alpha(opacity=0);
+    opacity: 0;
+}
+.modal-backdrop.in {
+    filter: alpha(opacity=50);
+    opacity: .5;
+}
+.modal-header {
+    min-height: 16.42857143px;
+    padding: 15px;
+}
+.modal-header .close {
+    margin-top: -2px;
+}
+.modal-title {
+    margin: 0;
+    line-height: 1.42857143;
+}
+.modal-body {
+    position: relative;
+    padding: 15px;
+}
+.modal-footer {
+    padding: 5px 0 20px 0;
+    text-align: center;
+}
+.modal-footer .btn + .btn {
+    margin-bottom: 0;
+    margin-left: 5px;
+}
+.modal-footer .btn-group .btn + .btn {
+    margin-left: -1px;
+}
+.modal-footer .btn-block + .btn-block {
+    margin-left: 0;
+}
+.modal-scrollbar-measure {
+    position: absolute;
+    top: -9999px;
+    width: 50px;
+    height: 50px;
+    overflow: scroll;
+}
+@media (min-width: 768px) {
+    .modal-dialog {
+        width: 600px;
+        margin: 0px auto;
+    }
+    .modal-content {
+        -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+    }
+    .modal-sm {
+        width: 300px;
+    }
+}
+@media (min-width: 992px) {
+    .modal-lg {
+        width: 900px;
+    }
+}
+
+.modal-footer:before,
+.modal-footer:after {
+    display: table;
+    content: " ";
+}
+.modal-footer:after {
+    clear: both;
+}
+
+
+
+</style>
+
+
+
+<div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="text-align: center;display: none;padding-right: 16px;">
+	<div class="modal-dialog" style="width:640px;text-align:center;">
+		<div id="autoCenter" class="modal-content" style="padding: 5px 30px 10px; height: auto; margin-top: 164px;">
+			
+			
+			<div class="modal-header" style="border:none;text-align:left;margin-left:20px;">
+				
+				<h3 class="modal-title" id="myModalLabel" style="font-size:18px;">
+					香港XIN网交易所提醒您:
+				</h3>
+			</div>
+			<div class="modal-body" style="font-size:18px;width: 550px;margin-top:-30px;">
+				<div class="paragraph paragraph_news" style="font-size:14px;text-indent:2em;line-height: 30px;text-align:left;">
+                       <p>
+	<span style="line-height:14.4px;"><span style="line-height:14.4px;">根椐有关部门的相关规定，加密数字货币作为互联网上的商品买卖行为，普通民众在自担风险的前提下拥有参与的自由。加密数字货币前存在预挖、庄家操控、团队解散等风险因素，导致交加密数字货币具有一定的风险。香港新网交易平台仅用户提供一个自由的网上交换平台，对在<span>香港新网交易平台仅交易</span>的加密的数字货币网站运营方不承担任何审查、担保、赔偿的法律责任。</span></span> 
+</p>
+<p>
+	<br />
+</p>				</div>
+			</div>
+			<div class="modal-footer" style="border:none;">
+				<button type="button" style="cursor:pointer;font-family:Microsoft YaHei !important;font-size:18px;background: #f60;width:200px;height:40px;border:0px;color:white" class="btn btn-warning" data-dismiss="modal" id="yes_sure">我已了解以上风险
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal-backdrop fade in" style="display:none;"></div>
+
+<script>
+
+	$("#yes_sure").click(function(){
+		$('#myModal').css('display','none');
+		$('.modal-backdrop').css('display','none');
+		$.cookies.set('move_waring', 1);
+	});
+	
+	$(function () {
+        var waring = $.cookies.get('move_waring');
+        if (!waring) {
+			$('#myModal').css('display','block');
+			$('.modal-backdrop').css('display','block');
+			$.cookies.set('move_waring', 1,{ hoursToLive: 24 });
+        }
+    });
+
+
+</script>
+
+
+﻿
+<div class="clear">
+</div>
+<div class="boxs mt40">
+    <footer id="footer" class="footer">
+        <section class="main">
+            <div class="about_me"  style='width:240px;'>
+                <div class="wx" style='margin-top:1px;'>
+                    <a href="javascript:" class="footer_wx_icon;">
+				<a href="javascript:" class="footer_wx_icon"><img src="/f_ewm.png"></a>
+					</a>
+                </div>
+            </div>
+
+			
+            <div class="layout_center">
+
+                
+			<div class="list"><label>帮助中心</label>
+					<ul>
+						<li><a href="/Article/type/id/10.html" style="overflow: hidden;">注册指南</a></li><li><a href="/Article/type/id/11.html" style="overflow: hidden;">交易指南</a></li><li><a href="/Article/type/id/12.html" style="overflow: hidden;">充值指南</a></li><li><a href="/Article/type/id/13.html" style="overflow: hidden;">APPios版添加信任教程</a></li>						<li><a href="/Article/type/id/3.html" style="overflow: hidden;    text-align: left;">更多</a></li>
+					</ul>
+				</div><div class="list"><label>下载中心</label>
+					<ul>
+						<li><a href="/Article/type/id/16.html" style="overflow: hidden;">浏览器下载</a></li><li><a href="/Article/type/id/17.html" style="overflow: hidden;">新币上线申请</a></li>						<li><a href="/Article/type/id/2.html" style="overflow: hidden;    text-align: left;">更多</a></li>
+					</ul>
+				</div>				
+				
+				
+				<div class="contact_us">
+                    <div class="contact_us_text0" style="text-align: left;">24小时免费咨询邮箱 :</div>
+                    <div class="contact_us_text1" style="text-align: left;margin-top: 10px;margin-bottom: 12px;">
+                       3391168307                 </div>
+                    <div class="contact_us_text2" style="text-align: left;margin-bottom: 5px;">
+                        工作日:9:00-19:00
+                    </div>
+                    <div class="contact_us_text2" style="text-align: left;margin-bottom: 5px;">
+                        节假日:9:00-18:00
+                    </div>
+                    
+					
+					<div>
+							<a href="#" class="contact_us_text3"><span>会员群号 :1群：859658053</span></a>
+						</div>	
+					
+					
+					
+                                    </div>
+            </div>
+        </section>
+    </footer>
+    <div class="footer_bottom">
+	
+		 <div style="margin-bottom: 5px;width:1200px;margin:0 auto;">
+			 <span class="text-danger">风险提示：虚拟数字货币交易存在风险，请谨慎参与</span>
+		 </div>
+	
+         <div class="autobox" style="height: 40px;margin-top: 5px;">
+			<span style="display: inline-block;color:#A6A9AB;">
+			CopyRight© 2016-2020 香港XIN网交易所 All Rights Reserved &nbsp;&nbsp;|&nbsp;&nbsp;
+			 <a href="http://www.miitbeian.gov.cn/publish/query/indexFirst.action" target="_blank"></a>
+			 <span style="margin-left:10px; color:#A6A9AB"><!--放统计代码  --></span>
+			</span>
+			
+			<span style="float: right;">
+			 <a href="http://www.gov.cn/" target="_blank" class="margin10" style="margin-left:5px;"> <img
+                     src="/Upload/footer/footer_1.png"> </a>
+			 <a href="http://www.szfw.org/" target="_blank" class="margin10" style="margin-left:5px;"> <img
+                     src="/Upload/footer/footer_2.png"> </a>
+			 <!--<a href="http://www.miibeian.gov.cn/" target="_blank" class="margin10" style="margin-left:5px;"><img
+                     src="/Upload/footer/footer_3.png"> </a>
+			 <a href="http://www.cyberpolice.cn/" target="_blank" class="margin10" style="margin-left:5px;"><img
+                     src="/Upload/footer/footer_4.png"> </a-->
+		 </span>
+         </div>
+    </div>
+</div>
+
+
+<style>
+
+.sidetool{box-sizing:border-box;position: fixed;right:20px;top:40%;z-index: 333;}
+.sidetool li span{position:absolute;right:40px;top:0;text-align:center;overflow:hidden;visibility:hidden;width:0px;height:40px;background:#ff6709;line-height:40px;color:#fff;transition: width .25s ease-in-out .1s;}
+.sidetool li:hover span{box-sizing:border-box;width: 120px;visibility: visible;}
+.sidetool li span.sqrcode i{display:block;visibility:hidden;opacity: 0;transition:all .3s ease-in 0;position: absolute;bottom:-5px;font-style:normal;font-size:12px;width: 100%;text-align: center;}
+.sidetool li:hover span.sqrcode i{opacity:1;visibility: visible;}
+.sidetool li:hover span.sqrcode{width: 120px;height: 140px;padding:12px 0;}
+.sidetool ul>li{box-shadow: 0 0 5px rgba(0,0,0,.12);margin:1px 0;position:relative;padding-top:10%;width: 40px;height: 40px;background-color: #fff;box-sizing:border-box;}
+.sidetool ul>li:hover{background-color: #ff6709;}
+.sidetool ul>li>a{box-sizing:border-box;display: inline-block;width: 100%;height: 100%;}
+.sidetool .sidetool-item{margin:5px auto;width: 52%;transition:all .3s ease-in 0s;
+    height: 60%;display: block;background:url('/Public/Home/kefu/sidebar.png') no-repeat;background-position: 0 0;}
+.sidetool .sidetool-item.qq{background-position: 0 0;}
+.sidetool .sidetool-item.mobile{
+    background-position: 0 -169px;}
+.sidetool ul>li:hover .sidetool-item.mobile{
+    background-position: 0 -194px;}
+.sidetool ul>li:hover .sidetool-item.qq{background-position: 0 -24px;}
+.sidetool .sidetool-item.wechat{background-position: 0 -127px;}
+.sidetool ul>li:hover .sidetool-item.wechat{background-position: 0 -147px;}
+.sidetool .sidetool-item.tel{background-position: 0 -87px;}
+.sidetool ul>li:hover .sidetool-item.tel{background-position: 0 -107px;}
+.sidetool .sidetool-item.qrc{background-position: 0 -48px;}
+.sidetool ul>li:hover .sidetool-item.qrc{background-position: 0 -68px;}
+
+.jubi-lts-an:hover{
+	background:#eb5200;
+}
+.jubi-lts-an:hover p{
+	color: #fff;
+}
+.jubi-lts-an:hover i.jubi-lts-ant{
+	background-position: 0px -16px;
+}
+
+.jubi-lts-an {
+    width: 40px;
+    height: 83px;
+    background: #fff;
+    box-shadow: 0 0 5px rgba(0,0,0,.12);
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
+    border-radius: 2px;
+    z-index: 10;
+    -webkit-transition: -webkit-transform 0.6s cubic-bezier(0.2, 1, 0.3, 1);
+    transition: transform 0.6s cubic-bezier(0.2, 1, 0.3, 1);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    padding-top: 7px;
+    box-sizing: border-box;
+}
+
+ .jubi-lts-an i.jubi-lts-ant {
+    width: 19px;
+    height: 17px;
+    display: block;
+    background-image: url('/Public/Home/kefu/jubi-lts-logo.png');
+    background-position: 0px 0px;
+    background-size: 19px;
+    margin: 0px auto 4px;
+    transition: all .3s ease-in 0s;
+}
+
+.jubi-lts-an P {
+    font-size: 14px;
+    color: #eb5200;
+    width: 19px;
+    text-align: center;
+    margin: 0px auto;
+    line-height: 15px;
+}
+ 
+ </style>
+
+  <div id="kf1" class="sidetool hidden-xs">
+   <ul>
+    <li><a href="http://wpa.qq.com/msgrd?v=3&uin=3391168307&site=qq&menu=yes" target="_blank"><i class="sidetool-item qq"></i></a><span style="cursor:pointer;" onclick="javascript:window.open('http://wpa.qq.com/msgrd?v=3&uin=3391168307&site=qq&menu=yes');">QQ在线客服</span></li>
+    <li><a href="#" onclick="javascript:return false;"><i class="sidetool-item wechat"></i></a><span class="sqrcode"><img src="/upload/public/5a605d5917ecf.png" alt="" /><i>微信群号</i></span></li>
+    <li><a href="#" onclick="javascript:return false;"><i class="sidetool-item mobile"></i></a><span class="sqrcode"><img width="100" style="background-color: #fff;" src="/upload/public/5a605d6086160.png" alt="" /><i>访问手机版</i></span></li>
+    <li><a href=""><i class="sidetool-item tel"></i></a><span>3391168307</span></li>
+   </ul>
+  </div>
+  
+
+
+
+
+
+
+
+
+
+
+<div id="all_mask" class="all_mask" style="height: 0px; display: none;"></div>
+<div id="all_mask_loginbox" class="all_mask_loginbox" style="display: none;">
+    <div class="login_title pl20">
+        <span onclick="saoma()" style="text-align: center;margin-left: 15px;color: #1a81d6;cursor:pointer;">会员登录</span>
+		
+		
+			</div>
+    <form id="form-login" class="mask_wrap login-fb">
+        <div class="login_text zin90">
+            <div class="mask_wrap_title">账户：</div>
+            <input type="text" id="login_mobles" class="texts" style="display: none;">
+            <input type="text" id="login_moble" class="texts hg40 w250" placeholder="请输入手机号码"
+                   style="padding-left: 42px;" value=""/>
+            <link rel="stylesheet" href="/qq3479015851/css/intltelinput.css">
+            <script src="/qq3479015851/js/intltelinput.js"></script>
+            <script>
+                $("#login_mobles").intlTelInput({
+                    autoHideDialCode: false,
+                    defaultCountry: "cn",
+                    nationalMode: false,
+                    preferredCountries: ['cn', 'us', 'hk', 'tw', 'mo'],
+                });
+            </script>
+        </div>
+        <div class="login_text zin80">
+            <div class="mask_wrap_title">密码：</div>
+            <input id="login_password" class="texts hg40 w250" type="password" placeholder="请输入登录密码">
+        </div>
+        <div class="login_text zin80">
+            <div class="mask_wrap_title">验证码：</div>
+            <input type="text" id="login_verify" value="" class="texts w145 hg40" placeholder="请输入验证码"/>
+			<span style="vertical-align: -17px;line-height: 20px;">
+				<img id="login_verify_up" class="codeImg reloadverify hg40" src="/Verify/code.html"
+                     title="换一张" onclick="this.src=this.src+'?t='+Math.random()" width="100" height="34">
+			</span>
+        </div>
+        <div class="login_button">
+            <input type="button" value="登录" onclick="footer_login();" class="btns2  hg40 w250">
+        </div>
+        <div class="login-footer wwxwwx" style="border-bottom-left-radius: 3px; border-bottom-right-radius: 3px;">
+			<span style="color: #CCC; float: right; margin-right: 25px;">
+			<a style="font-size: 14px;" href="/Login/register.html">免费注册</a>｜<a href="/Login/findpwd.html" style="font-size: 14px;">忘记密码</a>
+			</span>
+        </div>
+    </form>
+    <div class="mask_wrap_close" onclick="wrapClose()"><i class="fa fa-times fz_20 move" aria-hidden="true"></i></div>
+</div>
+
+
+
+
+<style>
+.th-lts-con-t {
+    width: 100%;
+    background: #fff;
+}
+
+.th-lts-con-t h1 {
+    height: 30px;
+    line-height: 30px;
+    width: 100%;
+    background: #f8f8f8;
+    font-size: 12px;
+    color: #333;
+    padding-left: 10px;
+    box-sizing: border-box;
+    font-weight: normal;
+    letter-spacing: 1px;
+}
+
+
+.buyonesellone {
+    border: 1px solid #d5d5d5;
+    background-color: #ffffff;
+}
+
+#marqueebox1 {
+    height: 450px;
+    max-height: 450px;
+    overflow-x: hidden;
+    overflow-y: auto;
+	z-index:999px;
+}
+
+#marqueebox1 li{
+    font-size:14px;
+    text-align:left;
+    padding:1px;
+    padding-left:5px;
+}
+
+#marqueebox1 li:hover{
+    background:#ebf4fe;
+}
+
+
+#marqueebox1{
+    height:630px;
+    max-height:625px;
+    overflow-x:hidden;
+    overflow-y:auto;
+}
+
+#marqueebox1 li{
+    font-size:14px;
+    text-align:left;
+    padding:1px;
+    padding-left:5px;
+}
+
+#marqueebox1 li:hover{
+    background:#ebf4fe;
+}
+
+#marqueebox1 img{
+    margin-bottom:-3px;
+}
+
+#marqueebox2{
+    height:30px;
+    border-top:1px solid #d5d5d5;
+}
+
+#marqueebox2 img{
+    padding:2px;
+    margin-left:2px;
+    margin-top:2px;
+    margin-bottom:-2px;
+    border:#d5d5d5 solid 1px;
+}
+
+#marqueebox2 li a{
+    font-size:14px;
+}
+
+#marqueebox2 input{
+    width:192px;
+    height:22px;
+    color:#333333;
+    border:#d5d5d5 solid 1px;
+    background:#ffffff;
+    font-size:12px;
+    border-radius:3px;
+    padding:1px;
+    margin:2px;
+}
+
+#marqueebox2 input:hover{
+    border:#e55600 solid 1px;
+}
+
+#marqueebox2 .tijiao{
+    width:58px;
+    height:26px;
+    border:#e55600 solid 1px;
+    font-size:12px;
+    border-radius:10px;
+    outline:none;
+    border-radius:3px;
+    padding:1px;
+    margin:2px;
+    color:#ffffff;
+    background:#e55600;
+}
+
+#marqueebox2 .tijiao:hover{
+    color:#ffffff;
+    background:#ff660b;
+}
+
+</style>
+
+
+<div style="width:0;height:0;clear:both;"></div>
+ <div class="right" style="position:fixed;right:0px;bottom:0px;z-index:999;display:none;opacity:100;" id="trade_moshi_liaotian_1">
+	<div class="coinBox buyonesellone">
+		<div class="coinBoxBody buybtcbody2">
+			<div class="th-lts-con-t"> <h1>聊天室 <span onclick="javacript:$('#trade_moshi_liaotian_1').hide();$('#kf1').show();$('#chat1').show();" style="float:right;cursor:pointer;">关闭</span></h1>
+			
+			</div>
+			
+			
+			<div id="marqueebox1" style="height:450px;max-height: 450px;" class="">
+				<ul id="chat_content">
+				</ul>
+			</div>
+			<div id="marqueebox2">
+				<ul class="clearfix">
+					<li id="face" class="left"><a href="javascript:void(0);" class="face faceBtn" id="face1">
+						<img src="/Public/Home/images/face.gif" width="20">
+					</a></li>
+					<li id="msg" class="left">
+					<input type="text" name="msg" class="text" id="chat_text"></li>
+					<li id="send" class="right"><input class="tijiao" type="button" value="发送"
+													   onclick="upChat()"></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" src="/Public/Home/js/jquery.qqFace.js"></script>
+
+<script type="text/javascript">
+    //@他
+    function atChat(_this) {
+        $("#chat_text").val('@' + $(_this).html() + ' :');
+    }
+    // 回车提交聊天
+    $("#chat_text").keyup(function (e) {
+        if (e.keyCode === 13) {
+            upChat();
+            return false;
+        }
+    });
+    // 提交聊天
+
+	/**
+    function upChat() {
+        var content = $("#chat_text").val();
+        if (content == "" || content == null) {
+            layer.tips('请输入内容', '#chat_text', {tips: 3});
+            return false;
+        }
+        $.post("/Ajax/upChat", {content: content}, function (data) {
+            if (data.status == 1) {
+                $("#chat_text").val('');
+                getChat();
+            } else {
+                layer.tips(data.info, '#chat_text', {tips: 3});
+                return false;
+            }
+        }, 'json');
+    }
+
+	**/
+    //表情盒子的ID//给那个控件赋值//表情存放的路径
+    $('#face1').qqFace({id: 'facebox1', assign: 'chat_text', path: '/Upload/face/'});
+
+	
+	/**
+    function getChat() {
+        //if (trade_moshi == 2) {
+            $.getJSON("/Ajax/getChat?t=" + Math.random(), function (data) {
+                if (data) {
+
+
+                    var list = '';
+                    for (i = 0; i < data.length; i++) {
+                        list += '<li><a href="javascript:void(0);" onclick="atChat(this)">' + data[i][1] + '</a>：' + data[i][2] + '</li>';
+					}
+                    list = list.replace(/\[\/#([0-9]*)\]/g, '<img src="/Upload/face/$1.gif"  width="18">');
+
+                    if ($("#chat_content").html() != list) {
+                        $("#chat_content").html(list);
+                        $("#marqueebox1").scrollTop(40000);
+                    }
+
+
+                }
+            });
+            setTimeout('getChat()', 5000);
+        //}
+    }
+
+	
+	getChat();
+	**/
+
+</script>	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    $(document).ready(function () {
+        $("#leftsead a").hover(function () {
+            if ($(this).prop("className") == "youhui") {
+                $(this).children("img.hides").show();
+            } else {
+                $(this).children("div.hides").show();
+                $(this).children("img.shows").hide();
+                $(this).children("div.hides").animate({marginRight: '0px'}, '0');
+            }
+        }, function () {
+            if ($(this).prop("className") == "youhui") {
+                $(this).children("img.hides").hide();
+            } else {
+                $(this).children("div.hides").animate({marginRight: '-163px'}, 0, function () {
+                    $(this).hide();
+                    $(this).next("img.shows").show();
+                });
+            }
+        });
+        $("#top_btn").click(function () {
+            if (scroll == "off") return;
+            $("html,body").animate({scrollTop: 0}, 600);
+        });
+    });
+</script>
+
+<script>
+    $(function () {
+        var userid = "";
+        if (window.location.hash == '#login') {
+            if (!userid) {
+                loginpop();
+            }
+        }
+
+        if (window.location.hash == '#goole') {
+            goolepop();
+        }
+        if (window.location.hash == '#yidi') {
+            yidipop();
+        }
+        var move_moble = $.cookies.get('move_moble');
+        if (move_moble != '' && move_moble != null) {
+            $("#login_moble").val(move_moble);
+        }
+    });
+
+	
+    function loginpop() {
+        var height = $(document).height();
+        if (height < 1000) {
+            height = 1000;
+        }
+        $('.all_mask').css({'height': height});
+        $('.all_mask').show();
+        $('#all_mask_loginbox').show();
+    }
+    function goolepop() {
+        var height = $(document).height();
+        if (height < 1000) {
+            height = 1000;
+        }
+        $('.all_mask').css({'height': height});
+        $('.all_mask').show();
+        $('#all_mask_goolebox').show();
+    }
+    function yidipop() {
+        var height = $(document).height();
+        if (height < 1000) {
+            height = 1000;
+        }
+        $('.all_mask').css({'height': height});
+        $('.all_mask').show();
+        $('#all_mask_yidibox').show();
+    }
+
+    function wrapClose() {
+        $('.all_mask').hide();
+        $('.all_mask_loginbox').hide();
+    }
+    function footer_login() {
+        var moble = $("#login_moble").val();
+        var mobles = $("#login_mobles").val();
+        var password = $("#login_password").val();
+        var verify = $("#login_verify").val();
+        if (moble == "" || moble == null) {
+            layer.tips('请输入手机号', '#login_moble', {tips: 2});
+            return false;
+        }
+        if (password == "" || password == null) {
+            layer.tips('请输入登录密码', '#login_password', {tips: 2});
+            return false;
+        }
+        if (verify == "" || verify == null) {
+            layer.tips('请输入验证码', '#login_verify', {tips: 2});
+            return false;
+        }
+        $.post("/login/submit.html", {
+            moble: moble,
+            mobles: mobles,
+            password: password,
+            verify: verify,
+            login_token: "",
+        }, function (data) {
+            if (data.status == 1) {
+                $.cookies.set('move_moble', moble);
+                layer.msg(data.info, {icon: 1});
+                if (data.url) {
+                    window.location = data.url;
+                } else {
+                    window.location = "/";
+                }
+            } else {
+                $("#login_verify_up").click();
+                layer.msg(data.info, {icon: 2});
+                if (data.url) {
+                    window.location = data.url;
+                }
+            }
+        }, "json");
+    }
+    function footer_goole() {
+        var password = $("#goole_password").val();
+        if (password == "" || password == null) {
+            layer.tips('请输入谷歌密码', '#goole_password', {tips: 2});
+            return false;
+        }
+        $.post("/login/goole.html", {
+            password: password,
+        }, function (data) {
+            if (data.status == 1) {
+                layer.msg(data.info, {icon: 1});
+                if (data.url) {
+                    window.location = data.url;
+                } else {
+                    window.location = '/';
+                }
+            } else {
+                layer.msg(data.info, {icon: 2});
+                if (data.url) {
+                    window.location = data.url;
+                }
+            }
+        }, "json");
+    }
+    function footer_yidi() {
+        var password = $("#yidi_password").val();
+        if (password == "" || password == null) {
+            layer.tips('请输入短信验证码', '#yidi_password', {tips: 2});
+            return false;
+        }
+        $.post("/login/yidi.html", {
+            password: password,
+        }, function (data) {
+            if (data.status == 1) {
+                layer.msg(data.info, {icon: 1});
+                if (data.url) {
+                    window.location = data.url;
+                } else {
+                    window.location = '/';
+                }
+            } else {
+                layer.msg(data.info, {icon: 2});
+                if (data.url) {
+                    window.location = data.url;
+                }
+            }
+        }, "json");
+    }
+</script>
+
+
+</body>
+
+
+
+<script>
+    $(document).ready(function () {
+        $.each($(".mv-hide"), function () {
+            eval($(this).html());
+        });
+    });
+</script>
+</html>

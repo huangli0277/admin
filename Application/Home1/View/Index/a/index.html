@@ -1,0 +1,225 @@
+<include file="Public:header"/>
+<link rel="stylesheet" type="text/css" href="css/jquery.jslides.css" media="screen" />
+<script type="text/javascript" src="js/jquery.jslides.js"></script>
+<!-- 代码 开始 -->
+<div id="full-screen-slider" style="margin-top: 50px;height: 587px;">
+	<ul id="slides" style="height: 587px;">
+		<volist name="indexAdver" id="vo">
+		<li style="background:url('__UPLOAD__/ad/{$vo.img}') no-repeat center top"><a href="{$vo['url']}" >&nbsp;</a></li>
+		</volist>	
+	</ul>
+</div>
+<!-- 代码 结束 -->
+
+<style>
+	#pagination{ margin-left:0px !important; top:545px !important}
+	body{ background: #fff}
+	.coins{ width: 1200px; margin: 10px auto}
+	.coin{ width: 100%; float: left}
+	.coin h4{ font-size: 13px; color: #666}
+	.coin a{ color: #0EB496}
+	.coin .b{ font-size: 16px; font-weight: bold; margin: 10px 0}
+	.coin li{ width: 14.5%; border: #eee 1px solid; padding: 10px; float: left; margin: 1%; border-radius: 2px; height: 94px;}
+	.coin li:hover{ border: #ccc 1px solid;box-shadow: 2px 2px 2px  #ccc;  background:#FCFCFC}
+	.red{ color: #FF0000}
+</style>
+<div class="coins">
+<ul class="coin" id="coin_li">
+			<volist name="lists" id="vo">
+				<li><a href="/trade/index/market/{$vo.url}"><h4>{$vo.title}</h4><p class="b">{$vo.new_price}</p><p class="{$vo.class}">{$vo.change}%</p></a></li>
+				</volist>
+</ul>
+</div>
+
+<style>
+
+
+.modal-open {
+    overflow: hidden;
+}
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10000;
+    display: none;
+    overflow: hidden;
+    -webkit-overflow-scrolling: touch;
+    outline: 0;
+}
+.modal.fade .modal-dialog {
+    -webkit-transition: -webkit-transform .3s ease-out;
+    -o-transition:      -o-transform .3s ease-out;
+    transition:         transform .3s ease-out;
+    -webkit-transform: translate(0, -25%);
+    -ms-transform: translate(0, -25%);
+    -o-transform: translate(0, -25%);
+    transform: translate(0, -25%);
+}
+.modal.in .modal-dialog {
+    -webkit-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    -o-transform: translate(0, 0);
+    transform: translate(0, 10%);
+    /*transform: translate(0, 0);*/
+}
+.modal-open .modal {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.modal-dialog {
+    position: relative;
+    width: auto;
+    margin: 10px;
+}
+.modal-content {
+    position: relative;
+    background-color: #fff;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 1px solid #999;
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: 6px;
+    outline: 0;
+    -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+    box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+}
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1040;
+    background-color: #000;
+}
+.modal-backdrop.fade {
+    filter: alpha(opacity=0);
+    opacity: 0;
+}
+.modal-backdrop.in {
+    filter: alpha(opacity=50);
+    opacity: .5;
+}
+.modal-header {
+    min-height: 16.42857143px;
+    padding: 15px;
+}
+.modal-header .close {
+    margin-top: -2px;
+}
+.modal-title {
+    margin: 0;
+    line-height: 1.42857143;
+}
+.modal-body {
+    position: relative;
+    padding: 15px;
+}
+.modal-footer {
+    padding: 5px 0 20px 0;
+    text-align: center;
+}
+.modal-footer .btn + .btn {
+    margin-bottom: 0;
+    margin-left: 5px;
+}
+.modal-footer .btn-group .btn + .btn {
+    margin-left: -1px;
+}
+.modal-footer .btn-block + .btn-block {
+    margin-left: 0;
+}
+.modal-scrollbar-measure {
+    position: absolute;
+    top: -9999px;
+    width: 50px;
+    height: 50px;
+    overflow: scroll;
+}
+@media (min-width: 768px) {
+    .modal-dialog {
+        width: 600px;
+        margin: 0px auto;
+    }
+    .modal-content {
+        -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+    }
+    .modal-sm {
+        width: 300px;
+    }
+}
+@media (min-width: 992px) {
+    .modal-lg {
+        width: 900px;
+    }
+}
+
+.modal-footer:before,
+.modal-footer:after {
+    display: table;
+    content: " ";
+}
+.modal-footer:after {
+    clear: both;
+}
+
+
+
+</style>
+
+<div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="text-align: center;display: none;padding-right: 16px;">
+	<div class="modal-dialog" style="width:640px;text-align:center;">
+		<div id="autoCenter" class="modal-content" style="padding: 5px 30px 10px; height: auto; margin-top: 164px;">
+			
+			
+			<div class="modal-header" style="border:none;text-align:left;margin-left:20px;">
+				
+				<h3 class="modal-title" id="myModalLabel" style="font-size:18px;">
+					{$C['web_name']}提醒您:
+				</h3>
+			</div>
+			<div class="modal-body" style="font-size:18px;width: 550px;margin-top:-30px;">
+				<div class="paragraph paragraph_news" style="font-size:14px;text-indent:2em;line-height: 30px;text-align:left;">
+                       {$C['web_waring']}
+				</div>
+			</div>
+			<div class="modal-footer" style="border:none;">
+				<button type="button" style="cursor:pointer;font-family:Microsoft YaHei !important;font-size:18px;background: #0EB496;width:200px;height:40px;border:0px;color:white" class="btn btn-warning" data-dismiss="modal" id="yes_sure">我已了解以上风险
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal-backdrop fade in" style="display:none;"></div>
+
+<script>
+
+	$("#yes_sure").click(function(){
+		$('#myModal').css('display','none');
+		$('.modal-backdrop').css('display','none');
+		$.cookies.set('move_waring', 1);
+	});
+	
+	$(function () {
+        var waring = $.cookies.get('move_waring');
+        if (!waring) {
+			$('#myModal').css('display','block');
+			$('.modal-backdrop').css('display','block');
+			$.cookies.set('move_waring', 1,{ hoursToLive: 24 });
+        }
+    });
+
+
+</script>
+
+
+<include file="Public:footer"/>
+
+
+
+

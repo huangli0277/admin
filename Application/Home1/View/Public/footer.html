@@ -1,0 +1,437 @@
+
+<div class="clear">
+</div>
+<div class="boxs mt40">
+    <footer id="footer" class="footer">
+        <section class="main">
+            <div class="about_me"  style='width:340px; border: none'>
+                <div class="wx" style='margin-top:1px; text-align: left'>
+					<img src="__UPLOAD__/public/{$C['footer_logo']}" >
+			<p style=" margin-top: 10px; line-height: 170%">比特币等加密数字货币的交易存在风险，7*24小时交易，没有涨停跌停限制，价格受到新闻事件，各国政策，市场需求等多种因素影响，浮动很大。我们强烈建议您事先调查了解，在自身所能承受的风险范围内参与交易。</p>
+                </div>
+            </div>
+
+			
+            <div class="layout_center">
+                
+			<volist name="footerArticleType" id="vo">
+
+				<div class="list"><label>{$vo['title']}</label>
+					<ul>
+						<volist name="footerArticle[$vo['name']]" id="vvo">
+							<li><a href="{:U('Article/type',array('id'=>$vvo['id']))}" style="overflow: hidden;">{$vvo['title']}</a></li>
+
+						</volist>
+						<li><a href="{:U('Article/type',array('id'=>$vo['id']))}" style="overflow: hidden;    text-align: left;">更多</a></li>
+					</ul>
+				</div>
+
+			</volist>
+				<div class="list list2"><label>联系我们</label>
+					<ul>
+						<li>
+							btc2c@qq.com
+					</ul> 
+					<div>
+						<p>
+							<img class="s1" src="/img/ico5.png">
+							<img class="s2" src="/img/ico5_1.png">
+						</p>
+						<p>
+							<img class="s1" src="/img/ico1.png">
+							<img class="s2" src="/img/ico1_1.png">
+						</p>
+						<p  onclick="javascript:window.open('http://wpa.qq.com/msgrd?v=3&uin=3299889202&site=qq&menu=yes', '_blank', 'height=502, width=644,toolbar=no,scrollbars=no,menubar=no,status=no');">
+							<img class="s1" src="/img/ico2.png">
+							<img class="s2" src="/img/ico2_1.png">
+						</p>
+						<p>
+							<img class="s1" src="/img/ico3.png">
+							<img class="s2" src="/img/ico3_1.png">
+						</p>
+						<p>
+							<img class="s1" src="/img/ico4.png">
+<!--							<img class="s2" src="/img/ico4_1.png">
+-->						</p>
+					</div>
+					
+					
+				</div>
+				
+				
+            </div>
+        </section>
+    </footer>
+    <div class="footer_bottom">
+        <div class="autobox" style="height: 40px;margin-top: 5px; text-align: center">
+			<span style="display: inline-block;color:#000;">
+			CopyRight© 2007-2017 {$C['web_name']}交易平台 All Rights Reserved &nbsp;&nbsp;|&nbsp;&nbsp;
+			</span>
+			
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div id="all_mask" class="all_mask" style="height: 0px; display: none;"></div>
+<div id="all_mask_loginbox" class="all_mask_loginbox" style="display: none; ">
+    <div class="login_title pl20">
+        <span onclick="saoma()" style="text-align: center;margin-left: 15px;color: rgb(14, 180, 147);cursor:pointer;">会员登录</span>
+		<eq name="Think.session.qq3479015851_already" value="1"><font color="#ff0000" size="1px;">您的账户在其它地方登录，请重新登录</font></eq>
+	</div>
+    <form id="form-login" class="mask_wrap login-fb">
+        <div class="login_text zin90">
+            <div class="mask_wrap_title">账户：</div>
+            <input type="text" id="login_mobles" class="texts" style="display: none;">
+            <input type="text" id="login_moble" class="texts hg40 w250" placeholder="请输入手机号码"
+                    value=""/>
+        </div>
+        <div class="login_text zin80">
+            <div class="mask_wrap_title">密码：</div>
+            <input id="login_password" class="texts hg40 w250" type="password" placeholder="请输入登录密码">
+        </div>
+        <div class="login_text zin80">
+            <div class="mask_wrap_title">验证码：</div>
+            <input type="text" id="login_verify" value="" class="texts w145 hg40" placeholder="请输入验证码"/>
+			<span style="line-height: 20px;">
+				<img id="login_verify_up" class="codeImg reloadverify hg40" src="{:U('Verify/code')}"
+                     title="换一张" onclick="this.src=this.src+'?t='+Math.random()" width="100" height="34">
+			</span>
+        </div>
+        <div class="login_button" style="width: 250px;">
+            <input type="button" value="登录" onclick="footer_login();" class="btns2  hg40 w250">
+        </div>
+        <div class="login-footer wwxwwx" style="border-bottom-left-radius: 3px; border-bottom-right-radius: 3px;">
+			<span style="color: #CCC; float: right; margin-right: 25px;">
+			<a style="font-size: 14px;" href="{:U('Login/register')}">免费注册</a>｜<a href="{:U('Login/findpwd')}" style="font-size: 14px;">忘记密码</a>
+			</span>
+        </div>
+    </form>
+    <div class="mask_wrap_close" onclick="wrapClose()"><i class="fa fa-times fz_20 move" aria-hidden="true"></i></div>
+</div>
+
+
+
+
+<style>
+.th-lts-con-t {
+    width: 100%;
+    background: #fff;
+}
+
+.th-lts-con-t h1 {
+    height: 30px;
+    line-height: 30px;
+    width: 100%;
+    background: #f8f8f8;
+    font-size: 12px;
+    color: #333;
+    padding-left: 10px;
+    box-sizing: border-box;
+    font-weight: normal;
+    letter-spacing: 1px;
+}
+
+
+.buyonesellone {
+    border: 1px solid #d5d5d5;
+    background-color: #ffffff;
+}
+
+#marqueebox1 {
+    height: 450px;
+    max-height: 450px;
+    overflow-x: hidden;
+    overflow-y: auto;
+	z-index:999px;
+}
+
+#marqueebox1 li{
+    font-size:14px;
+    text-align:left;
+    padding:1px;
+    padding-left:5px;
+}
+
+#marqueebox1 li:hover{
+    background:#ebf4fe;
+}
+
+
+#marqueebox1{
+    height:630px;
+    max-height:625px;
+    overflow-x:hidden;
+    overflow-y:auto;
+}
+
+#marqueebox1 li{
+    font-size:14px;
+    text-align:left;
+    padding:1px;
+    padding-left:5px;
+}
+
+#marqueebox1 li:hover{
+    background:#ebf4fe;
+}
+
+#marqueebox1 img{
+    margin-bottom:-3px;
+}
+
+#marqueebox2{
+    height:30px;
+    border-top:1px solid #d5d5d5;
+}
+
+#marqueebox2 img{
+    padding:2px;
+    margin-left:2px;
+    margin-top:2px;
+    margin-bottom:-2px;
+    border:#d5d5d5 solid 1px;
+}
+
+#marqueebox2 li a{
+    font-size:14px;
+}
+
+#marqueebox2 input{
+    width:192px;
+    height:22px;
+    color:#333333;
+    border:#d5d5d5 solid 1px;
+    background:#ffffff;
+    font-size:12px;
+    border-radius:3px;
+    padding:1px;
+    margin:2px;
+}
+
+#marqueebox2 input:hover{
+    border:#e55600 solid 1px;
+}
+
+#marqueebox2 .tijiao{
+    width:58px;
+    height:26px;
+    border:#e55600 solid 1px;
+    font-size:12px;
+    border-radius:10px;
+    outline:none;
+    border-radius:3px;
+    padding:1px;
+    margin:2px;
+    color:#ffffff;
+    background:#e55600;
+}
+
+#marqueebox2 .tijiao:hover{
+    color:#ffffff;
+    background:#ff660b;
+}
+
+</style>
+
+
+<div style="width:0;height:0;clear:both;"></div>
+
+
+
+<script>
+    $(document).ready(function () {
+        $("#leftsead a").hover(function () {
+            if ($(this).prop("className") == "youhui") {
+                $(this).children("img.hides").show();
+            } else {
+                $(this).children("div.hides").show();
+                $(this).children("img.shows").hide();
+                $(this).children("div.hides").animate({marginRight: '0px'}, '0');
+            }
+        }, function () {
+            if ($(this).prop("className") == "youhui") {
+                $(this).children("img.hides").hide();
+            } else {
+                $(this).children("div.hides").animate({marginRight: '-163px'}, 0, function () {
+                    $(this).hide();
+                    $(this).next("img.shows").show();
+                });
+            }
+        });
+        $("#top_btn").click(function () {
+            if (scroll == "off") return;
+            $("html,body").animate({scrollTop: 0}, 600);
+        });
+    });
+</script>
+
+<script>
+		var is_login = {$Think.session.userId};
+		if (window.location.hash == '#login') {
+			if (!is_login) {
+				loginpop();
+			}
+		}
+    $(function () {
+        var userid = "";
+
+        if (window.location.hash == '#goole') {
+            goolepop();
+        }
+        if (window.location.hash == '#yidi') {
+            yidipop();
+        }
+        var move_moble = $.cookies.get('move_moble');
+        if (move_moble != '' && move_moble != null) {
+            $("#login_moble").val(move_moble);
+        }
+    });
+
+	
+    function loginpop() {
+        var height = $(document).height();
+        if (height < 1000) {
+            height = 1000;
+        }
+        $('.all_mask').css({'height': height});
+        $('.all_mask').show();
+        $('#all_mask_loginbox').css({'position': 'fixed'});
+        $('#all_mask_loginbox').show();
+    }
+    function goolepop() {
+        var height = $(document).height();
+        if (height < 1000) {
+            height = 1000;
+        }
+        $('.all_mask').css({'height': height});
+        $('.all_mask').show();
+        $('#all_mask_goolebox').show();
+    }
+    function yidipop() {
+        var height = $(document).height();
+        if (height < 1000) {
+            height = 1000;
+        }
+        $('.all_mask').css({'height': height});
+        $('.all_mask').show();
+        $('#all_mask_yidibox').show();
+    }
+
+    function wrapClose() {
+        $('.all_mask').hide();
+        $('.all_mask_loginbox').hide();
+    }
+    function footer_login() {
+        var moble = $("#login_moble").val();
+        var mobles = $("#login_mobles").val();
+        var password = $("#login_password").val();
+        var verify = $("#login_verify").val();
+        if (moble == "" || moble == null) {
+			alert
+            layer.tips('请输入手机号', '#login_moble', {tips: 2});
+            return false;
+        }
+        if (password == "" || password == null) {
+            layer.tips('请输入登录密码', '#login_password', {tips: 2});
+            return false;
+        }
+        if (verify == "" || verify == null) {
+            layer.tips('请输入验证码', '#login_verify', {tips: 2});
+            return false;
+        }
+        $.post("/login/submit/", {
+            moble: moble,
+            mobles: mobles,
+            password: password,
+            verify: verify,
+            login_token: "",
+        }, function (data) {
+            if (data.status == 1) {
+ 				layer.msg(data.info, {icon:1});
+				window.location = "http://www.btc2c.cc";
+                //$.cookies.set('move_moble', moble);
+            } else {
+ 				layer.msg(data.info, {icon:2});
+             //  alert(data.info);
+                $("#login_verify_up").click();
+            }
+        }, "json");
+    }
+    function footer_goole() {
+        var password = $("#goole_password").val();
+        if (password == "" || password == null) {
+            layer.tips('请输入谷歌密码', '#goole_password', {tips: 2});
+            return false;
+        }
+        $.post("/login/goole.html", {
+            password: password,
+        }, function (data) {
+            if (data.status == 1) {
+                layer.msg(data.info, {icon: 1});
+                if (data.url) {
+                    window.location = data.url;
+                } else {
+                    window.location = '/';
+                }
+            } else {
+                layer.msg(data.info, {icon: 2});
+                if (data.url) {
+                    window.location = data.url;
+                }
+            }
+        }, "json");
+    }
+    function footer_yidi() {
+        var password = $("#yidi_password").val();
+        if (password == "" || password == null) {
+            layer.tips('请输入短信验证码', '#yidi_password', {tips: 2});
+            return false;
+        }
+        $.post("/login/yidi.html", {
+            password: password,
+        }, function (data) {
+            if (data.status == 1) {
+                layer.msg(data.info, {icon: 1});
+                if (data.url) {
+                    window.location = data.url;
+                } else {
+                    window.location = '/';
+                }
+            } else {
+                layer.msg(data.info, {icon: 2});
+                if (data.url) {
+                    window.location = data.url;
+                }
+            }
+        }, "json");
+    }
+</script>
+
+
+</body>
+
+
+
+<script>
+    $(document).ready(function () {
+        $.each($(".mv-hide"), function () {
+            eval($(this).html());
+        });
+    });
+</script>
+<script src="/js/language.js"></script>
+<script type="text/javascript">
+            $('html').s2t();
+</script>
+<script language="javascript" src="http://ala.zoosnet.net/JS/LsJS.aspx?siteid=ALA41091385&float=1&lng=cn"></script>
+</html>

@@ -1,0 +1,325 @@
+
+<include file="Public:header"/>
+
+
+<style>
+	.votebanner{ width: 100%; height: 587px; background: url(/Upload/ad/5aa38fdae42d1.jpg) no-repeat center top; margin-top: 50px;}
+	.now{ margin-top: 1px;}
+	.assets_content h1{ width: 1170px;}
+	.vote{ width: 100%; padding: 15px 30px; font-size: 14px;}
+	.vote li{ width: 100%; float: left; border-bottom: #ccc 1px dotted; line-height: 30px; padding-bottom: 20px; margin-bottom: 20px;}
+	.vote li .show{ font-size: 12px;  width: 100%}
+	.vote li .show span{ margin-right: 20px; float: right; cursor: pointer}
+	.vote li .show .tit{ font-size: 24px; font-weight: 400;  color: #0EB496; float: left}
+	.vote li .show .tit font{ font-size: 20px; font-weight: 400;  }
+	.vote li .show .lp{ border: #0EB496 1px solid; color: #0EB496; padding: 0px 30px;}
+	.vote li .show .tp{ border: #0EB496 1px solid; background: #0EB496; color: #fff; padding: 0px 30px;}
+	.vote li .con{width: 100%; float: left; color: #999; background: #eee; padding: 5px 15px; margin: 10px 0;}
+	
+	
+	.dialog_wrap{
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 9;
+	text-align: center;
+	background: rgba(0, 0, 0, .4);
+	}
+	.share_dialog{
+		padding: 10px;
+		width: 565px;
+		min-height: 240px;
+		background: #0EB496;
+		border-radius: 3px; 
+		position: relative;
+		color: #fff
+	}
+	.share_dialog .close{ width: 100%; text-align: right; color: #fff}
+	.share_dialog .close font{ margin-right:10px; cursor: pointer}
+	.share_dialog .xuan{  font-size: 20px; font-weight: 500; float: left; width: 100%; text-align: center}
+	.share_dialog .xuan2{  font-size: 22px; font-weight: 500; border: #fff 1px solid; padding: 5px 20px; width: 60%; margin:13px 20% 8px 20%; float: left; text-align: center}
+	.share_dialog .share{  float: left; width: 300px; margin-left: 122px; margin-top: 10px}
+	.share_dialog .share .ewm,.share_dialog .share .sha{
+		margin-left: 10px;
+		display: block;
+		width: 40px;
+		float: left
+	}
+	.share_dialog .share .ewm .s1,.share_dialog .share .sha .s1{ width: 35px; cursor: pointer}
+	.share_dialog .share .ewm .s2{ height: 102px; background: #fff;
+		width: 102px;  
+		margin-left: -30px;
+		margin-top: 0; 
+		display: none;
+		border: #eee 1px solid;  
+	}
+	.share_dialog .share .ewm .s2 img{ width: 110px; margin: 5px;float: left}
+	.share_dialog .share .ewm .s2 font{ width: 110px; margin: 5px;float: left; text-align: center; color: #333}
+	
+	.share_dialog .share .sha .s2{ height: 160px; background: #0EB496;
+		width: 380px;  
+		margin-left: -170px;
+		margin-top: 0; 
+		display:none ; 
+		border: #eee 1px solid; 
+	}
+	.share_dialog .share .sha .s2 span{ width: 100%; padding: 0 10px; display: block; height: 40px; line-height: 40px; margin: 0}
+	.share_dialog .share .sha .s2 .all{ font-size: 16px; font-weight: 500; margin-top: 10px;}
+	.share_dialog .share .sha .s2 .left,.share_dialog .share .sha .s2 .right{ width: 100px; height: 30px; line-height: 30px; color: #fff; border: #fff 1px solid; margin: 0 30px; margin-top: 20px;}
+	.share_dialog .share .ewm:hover .s2,.share_dialog .share .sha:hover .s2{ display: block}
+	.dialog{ top: 200px}
+	.safe_center h1 span{  font-size: 14px; margin-left: 0;}
+	.safe_center h1 span font{  font-size: 22px; margin: 0 5px; color: #0EB496}
+	.open{ height:30px !important; line-height:30px !important;font-size:14px !important; padding:0 ; color:#0EB496 !important; font-weight:normal !important; text-shadow:none !important}
+	.close{ height:30px !important; line-height:30px !important;font-size:14px !important; padding:0 ; color:#0EB496 !important; font-weight:normal !important; text-shadow:none !important}
+	.inde{ font-size:16px !important; margin-left:-43px; line-height:38px;}
+</style>   
+
+<input type="text" value="" id="copys" style="position: absolute;top: 0;left: 0;opacity: 0;z-index: -10;">
+<div class="votebanner"></div>    
+<div class="autobox" > 
+	<div class="now">
+		<i class="fa fa-home fa-lg move mr5"></i><a href="/" class="">首页</a> &gt; 新币投票	</div>
+	<div class="assets_content bg_w">
+		<div class="safe_center clear">
+			<h1>新币投票  
+			<eq name="lists" value='1'>
+			<span>本期投票暂未开始</span>
+			<else/>
+				&nbsp;&nbsp;<span>本期投票时间：{$boms.addtimes} 至 {$boms.endtimes}</span>
+				&nbsp;&nbsp;<span id="timer">还剩：<font>00</font>天<font>00</font>时<font>00</font>分<font>00</font>秒 </span>
+				<span>{$boms.show}</span>
+			</eq>
+			<a class="right ml20">
+				<i class="fa fa-hand-o-right fz_14 move"></i> <span class="fz_14 move">上币申请</span>
+			</a> 					
+			</h1>
+		</div>
+
+		<ul class="vote">
+                    <php>$num=1;</php>
+					<volist name="list" id="vo">
+			<li>
+			   <div class="show">
+<if condition="$num eq 1"> 
+                    <span class="tit"><img style="margin-top:-10px" src="/wap/images/no1.png" width="40"/></span> 
+            		<span class="tit inde">{$num}</span>
+<elseif condition="$num eq 2" />
+                    <span class="tit"><img style="margin-top:-10px" src="/wap/images/no2.png" width="40"/></span> 
+            		<span class="tit inde">{$num}</span>
+<elseif condition="$num eq 3" />
+                    <span class="tit"><img style="margin-top:-10px" src="/wap/images/no3.png" width="40"/></span> 
+            		<span class="tit inde">{$num}</span>
+<else />
+                    <span class="tit"><img style="margin-top:-10px" src="/wap/images/no4.png" width="40"/></span> 
+            		<span class="tit inde">{$num}</span>
+</if>   
+			   		<span class="tit" style="color:#333">{$vo['title']}(<font>{$vo['name']}</font>)</span>
+                    <span class="tit open open{$num}">查看介绍</span>
+			   		<span class="tit close " style="display:none">查看介绍</span>
+					<span class="tp" onclick="Update(1,'{$vo['name']}','{$vo['knum']}','<?php echo str_replace('人民币','CNYT',$vo['votecoin'])?>','{$vo['id']}');" >立即投票</span>
+					<span class="lp" >为他拉票</span>
+					<span class="ps"><a>{$vo['zhichi']}</a>票 / <a>{$vo['rens']}</a>人支持</span>
+					<div style="display: none">
+					<input type="hidden" value="{$vo['id']}">
+						<div class="dialog_wrap">
+							<div class="dialog share_dialog" >
+								<div class="close" ><font class="clos">X</font></div>
+								<div class="xuan">我为{$vo['name']}拉票，邀请好友来投票</div>
+								<div class="xuan2">注册领糖果，邀请有奖励</div>
+								<div class="xuan3">C网自助数字货币交易所</div>
+								<div class="share">
+									<div class="ewm">
+										<img class="s1" src="/img/ico_qq.png"> 
+										<div class="s2 ss">
+											
+										</div>
+									</div>
+									<div class="ewm">
+										<img class="s1" src="/img/ico_wx.png"> 
+										<div class="s2 ss">
+											
+										</div>
+									</div>
+									<div class="sha">
+										<img class="s1" src="/img/ico_qqr.png"> 
+										<div class="s2">
+											<span class="all">我为{$vo['name']}打CALL，快来C网帮忙投票！</span>
+											<span class="url">{$fx_url}</span>
+											<a class="left copys">一键复制</a>
+											<a class="right" href="https://user.qzone.qq.com/" target="_blank">打开QQ空间分享</a>
+										</div>
+									</div>
+									<div class="sha">
+										<img class="s1" src="/img/ico_wb.png"> 
+										<div class="s2">
+											<span class="all">我为{$vo['name']}打CALL，快来C网帮忙投票！</span>
+											<span class="url">{$fx_url}</span>
+											<a class="left  copys">一键复制</a>
+											<a class="right" href="https://weibo.com" target="_blank">打开微博分享</a>
+										</div>
+									</div>
+									<div class="sha">
+										<img class="s1" src="/img/ico_rr.png"> 
+										<div class="s2">
+											<span class="all">我为{$vo['name']}打CALL，快来C网帮忙投票！</span>
+											<span class="url">{$fx_url}</span>
+											<a class="left  copys">一键复制</a> 
+											<a class="right" href="http://www.renren.com/" target="_blank">打开人人网分享</a>
+										</div>
+									</div>
+									<div class="sha">
+										<img class="s1" src="/img/ico_db.png"> 
+										<div class="s2">
+											<span class="all">我为{$vo['name']}打CALL，快来C网帮忙投票！</span>
+											<span class="url">{$fx_url}</span>
+											<a class="left  copys">一键复制</a>
+											<a class="right" href="https://www.douban.com" target="_blank">打开豆瓣分享</a>
+										</div>
+									</div>
+								</div>
+							</div>
+				 		</div>
+					</div>
+					
+			   </div>
+				<div class="con con{$num}" style="display:none">{$vo['show1']}<br><a href="{$vo['web']}">前往官网</a> <a href="{$vo['bps']}">查看白皮书</a>
+				</div>
+			</li>		
+            		<php>$num++;</php>
+					</volist>
+		</ul>
+	</div>
+		</div>
+	</div>
+    <script>
+    	$(function(){
+			$('.open').click(function(){
+					$(this).parent().next().fadeIn();
+					$(this).css('display','none');
+					$(this).next().css('display','block');
+			})
+			$('.close').click(function(){
+					$(this).parent().next().fadeOut();
+					$(this).css('display','none');
+					$(this).prev().css('display','block');
+			})
+		})
+    </script>
+<style>
+	.piao{ width: 100px; border: #eee 1px solid; padding: 2px 5px;}
+</style>
+<script type="text/javascript" src="/cys/js/jquery.qrcode.min.js"></script>
+
+<script type="text/javascript">
+	function Update(type,coinname,assumnum,votecoin,id) {
+		var userid = {$Think.session.userId};
+		if(!userid){
+			loginpop();
+			return false;
+		}
+		//layer.confirm('投票需要扣除'+assumnum+'个'+votecoin+',您确认投票吗', 
+		if(assumnum >0){
+			var msgy = '投票数量：<input class="piao" type="text" value="10">  <br> 每票扣除'+assumnum+'个'+votecoin;
+		}else{
+			var msgy = '投票数量：<input class="piao" type="text" value="1" readonly="readonly">  <br> 此项目，24小时内仅能投1票！';
+		}
+		layer.confirm(msgy, 
+		{
+			btn: ['确认投票','取消'], //按钮
+			shade: false, //不显示遮罩
+			title:'请确认投票数量'
+		}, function(index){
+
+			var piao = $(".piao").val()
+		
+			$.post("/Vote/up", {
+				type : type,
+				coinname : coinname,
+				piao : piao,
+				votecoin : votecoin,
+				id : id
+			}, function (data) {
+				if (data.status == 1) {
+					layer.msg(data.info, {icon: 1});
+					window.setTimeout("window.location='/Vote/index'", 1000);
+				} else {
+					layer.msg(data.info, {icon: 2});
+					if (data.url) {
+						window.setTimeout("window.location=" + data.url, 1000);
+					}
+				}
+			}, "json");
+		
+			layer.close(index);
+		},function(index){
+			layer.close(index);
+		}
+		
+		);
+
+	}
+jQuery(document).ready(function($){
+	$('.clos').click(function() {
+		$(this).parent().parent().parent().parent().hide();
+	});
+	$('.lp').click(function() {
+		$(this).next().next().show();
+		var id = $(this).next().next().children('input').val();
+		$(this).next().next().find(".ss").qrcode({
+		render: "table", //table方式 
+		width: 100, //宽度
+		height: 100, //高度 
+		text: "{$wap_url}"+id
+		});
+	}); 
+	$('.copys').click(function() {
+		var tits = $(this).prev().prev().html();
+		var urls = $(this).prev().html();
+		var input = document.getElementById("copys");
+			input.value = tits +urls ; // 修改文本框的内容
+		  input.select(); // 选中文本
+		  document.execCommand("copy"); // 执行浏览器复制命令
+			layer.msg("复制成功", {icon: 1});
+		
+		
+	}); 
+	
+	
+	
+});	
+var intDiff = parseInt({$boms.stime});//倒计时总秒数量
+function timer(intDiff){
+    window.setInterval(function(){
+    var day=0,
+        hour=0,
+        minute=0,
+        second=0;//时间默认值        
+    if(intDiff > 0){
+        day = Math.floor(intDiff / (60 * 60 * 24));
+        hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
+        minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
+        second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+    }else{
+		document.getElementById("timer").innerHTML = "還剩：<font>0</font>天<font>0</font>時<font>0</font>分<font>0</font>秒";  
+		return false;
+	}
+    if (minute <= 9) minute = '0' + minute;
+    if (second <= 9) second = '0' + second;
+    if (hour <= 9) hour = '0' + hour;
+    if (day <= 9) day = '0' + day;
+	document.getElementById("timer").innerHTML = "還剩：<font>"+day+"</font>天<font>" + hour+"</font>時<font>" + minute+"</font>分<font>"+second+"</font>秒";  
+    intDiff--;
+    }, 1000);
+} 
+<eq name="lists" value='1'>
+			<else/>
+$(function(){
+    timer(intDiff);
+}); 
+	</eq>
+</script>
+
+<include file="Public:footer"/>

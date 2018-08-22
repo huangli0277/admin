@@ -1,0 +1,135 @@
+<include file="Public:header"/>
+<div id="main-content">
+	<div id="top-alert" class="fixed alert alert-error" style="display: none;">
+		<button class="close fixed" style="margin-top: 4px;">&times;</button>
+		<div class="alert-content">警告内容</div>
+	</div>
+	<div id="main" class="main">
+		<div class="main-title-h">
+			<span class="h1-title">财产管理</span>
+		</div>
+		<div class="cf">
+			<div class="fl"></div>
+			<div class="search-form fr cf">
+				<div class="sleft">
+					<form name="formSearch" id="formSearch" method="get" name="form1">
+
+						<select style=" width: 160px; float: left; margin-right: 10px;" name="field" class="form-control">
+							<option value="username"
+							<eq name="Think.get.field" value="username">selected</eq>
+							>用户名</option>
+							<option value="moble"
+							<eq name="Think.get.field" value="moble">selected</eq>
+							>手机号</option>
+						</select>
+						<input type="text" name="name" class="search-input form-control  " value="{$Think.get.name}" placeholder="请输入查询内容" style="">
+						<a class="sch-btn" href="javascript:;" id="search"> <i class="btn-search"></i> </a>
+					</form>
+					<script>
+						//搜索功能
+						$(function () {
+							$('#search').click(function () {
+								$('#formSearch').submit();
+							});
+						});
+						//回车搜索
+						$(".search-input").keyup(function (e) {
+							if (e.keyCode === 13) {
+								$("#search").click();
+								return false;
+							}
+						});
+					</script>
+				</div>
+			</div>
+		</div>
+		<div class="data-table table-striped">
+			<table class="">
+				<thead>
+				<tr>
+					<th class="row-selected row-selected"><input class="check-all" type="checkbox"/></th>
+					<th class="">ID</th>
+					<th class="">UID</th>
+					<th class="">手机号</th>
+					<th class="">操作</th>
+					<volist name=":C('coin')" id="v">
+						<th class="">{$v['title']}</th>
+					</volist>
+				</tr>
+				</thead>
+				<tbody>
+				<notempty name="list">
+					<volist name="list" id="vo">
+						<tr>
+							<td><input class="ids" type="checkbox" name="id[]" value="{$vo.id}"/></td>
+							<td>{$vo.id}</td>
+							<td>{$vo.userid}</td>
+							<td>{$vo['moble']}</td>
+							<td><a href="{:U('User/coinEdit?id='.$vo['id'])}" class="btn btn-primary btn-xs">编辑</a></td>
+							<volist name=":C('coin')" id="v">
+								<td>可用 {$vo[$v['name']] * 1}<br>冻结
+									<php>echo $vo[$v['name'].'d'] * 1;</php> 
+									<br> 总计
+									<php>echo $vo[$v['name'].'d'] * 1 + $vo[$v['name']] * 1;</php>
+									<br>
+									<a href="{:U('User/coinLog?coinname='.$v['name'].'&userid='.$vo['userid'])}">统计</a>
+									<a onClick="Update('{$v['name']}','{$vo['userid']}')">操作</a>
+								</td>
+							</volist>
+						</tr>
+					</volist>
+					<else/>
+					<td colspan="12" class="text-center">Oh! 暂时还没有内容!</td>
+				</notempty>
+				</tbody>
+			</table>
+			<div class="page">
+				<div>{$page}</div>
+			</div>
+		</div>
+	</div>
+</div>
+<include file="Public:footer"/>
+<block name="script">
+	<script type="text/javascript" charset="utf-8">
+		//导航高亮
+		highlight_subnav("{:U('User/coin')}");
+	function Update(coinname,mobile) {
+		var msgy = "币："+coinname+" UID："+mobile+'<br>操作数量：<input class="num" type="text" value="0">  <br>负数冻结，正数解冻';
+		layer.confirm(msgy, 
+		{
+			btn: ['确认','取消'], //按钮
+			shade: false, //不显示遮罩
+			title:'请确认操作数量'
+		}, function(index){
+
+			var num = $(".num").val()
+		
+			$.post("/Admin/User/coins/", {
+				coin : coinname,
+				mobile : mobile,
+				num : num,
+			}, function (data) {
+				if (data.status == 1) {
+					layer.msg(data.info, {icon: 1});
+					window.setTimeout("window.location=window.location.href", 1000);
+				} else {
+					layer.msg(data.info, {icon: 2});
+					if (data.url) {
+						window.setTimeout("window.location=" + data.url, 1000);
+					}
+				}
+			}, "json");
+		
+			layer.close(index);
+		},function(index){
+			layer.close(index);
+		}
+		
+		);
+
+	}
+		
+		
+	</script>
+</block>

@@ -1,0 +1,388 @@
+<include file="Public:header" />
+	
+    
+
+	
+<div class="autobox ">
+	<div class="now">
+		<i class="fa fa-home fa-lg move mr5"></i><a href="/" class="movesay">首页</a> &gt; <a href="/finan/index.html" class="movesay">财务中心 </a> &gt; C2C交易	</div>
+	<div class="main-content">
+		<style>
+	.nav-tab-list .nav-tab-hover{
+		width:100%;
+		top:60px;
+		height:50px;
+		line-height:50px;
+		background:#EAEDF4;
+		position:absolute;
+		box-sizing:content-box;
+		z-index:1;
+		transition:all 0.5s;
+		-webkit-transition:all 0.5s; 
+		display:none;
+	}
+.trade-main > .mairu {
+    float: right
+}
+
+.trade-main > .maichu {
+    float: left; border-left: 1px solid #ccc
+}
+.m_title {
+    height: 42px;
+    width: 100%;
+    font-size: 1.5em;
+    color: #111;
+    border-bottom: 1px solid #C8DAE2;
+    margin: 10px 0 20px;
+    line-height: 46px
+}
+			.step1{}
+			.step1 .right,.step1 .left{ width: 50%; padding:0  3% 0 3%; margin-bottom: 20px;}
+			.step1 .left{ border-right: #ccc 1px dotted}
+			.step1 h1{ width: 100%; border-bottom: #ccc 1px solid; padding: 0}
+			.step1 ul,.step1 ul li{ width: 100%; float: left}
+			.step1 ul li{ line-height: 40px;; height: 40px;}
+			.step1 ul li span{ width: 90px; line-height: 30px; height: 30px; float: left; background: #eee; border: #ccc 1px solid; padding:0 0 0 5px; margin: 0}
+			.step1 ul li p{ width: 326px; line-height: 32px; height: 32px; float: left;border: #ccc 1px solid; padding-left: 5px; border-left: none}
+			.step1 ul li p font{ color: #FF0000}
+			.step1 .btns2{ width: 423px} 
+			.f_table td{ line-height: 25px; height: auto} 
+			.f_table td img{cursor: pointer;  transition: all 0.6s;}
+			.f_table td img:hover{transform: scale(5); position: absolute; border: #ccc 0.1px solid;}
+		</style>
+<script type="text/javascript">
+	$(function () {
+		(function () {
+			var tab   = $('.nav-tab-list dd');
+			var hover = $('.nav-tab-hover');
+			var pos   = 0;
+			tab.each(function (index) {
+				var $this = $(this);
+				if ($this.hasClass('active')) {
+					pos = index;
+				}
+				$this.hover(function () {
+					_moveTo(index);
+				}, function () {
+					_moveTo(pos);
+				});
+			});
+			_moveTo(pos);
+			$('.nav-tab-hover').show();
+			function _moveTo(index) {
+				hover.css("top", 60 + 50 * index);
+				tab.removeClass('active');
+				tab.eq(index).addClass('active');
+			}
+		})();
+	});
+	$(window).on('scroll resize', function () {
+		if (document.body.scrollTop < 100) {
+			$('#left-nav-bar').css("top", 0);
+		} else if (document.body.scrollTop > ($('.tag-list-content').height() - $('#left-nav-bar').height() + 100)) {
+			$('#left-nav-bar').css("top", ($('.tag-list-content').height() - $('#left-nav-bar').height()));
+		} else {
+			$('#left-nav-bar').css("top", document.body.scrollTop - 100);
+		}
+	});
+</script>
+
+<include file="Finance:left" />
+
+
+
+        <div class="tag-list-content assets_content bg_w">
+            <div class="safe_center clear">
+                <h1>
+					<span>C2C交易</span>
+                </h1>
+            </div>
+            <div id="hints" class="mytips" style="display:none;">
+
+	            <p>                <notempty name="prompt_text">
+                    {$prompt_text}
+                </notempty></p>            </div>
+            <div class="mytable-body ">
+                <div class="step1   pwtrade  pw  ">
+                	
+                	<div class="right">
+						<h1>卖出CNY</h1>
+               			<div class="forms">
+               					<ul>
+               						<li>
+               							<span>我的余额：</span>
+               							<p>{$user_coin.cny} CNYT</p>
+               						</li>
+               						<li>
+               							<span>卖出估价：</span>
+               							<p>0.995 CNYT</p>
+               						</li>
+               						<li> 
+               							<span>卖出量：</span>
+               							<p><input type="text" name="num" id="cnyin_num1" value="" onBlur="jnum(this.value,2)"></p>
+               						</li>
+               						<li>
+               							<span>金额：</span>
+               							<p id="prir">0 CNY</p> 
+               						</li>
+               						<li>
+               							<span>交易方式：</span>
+           							  <p>
+               							  <label>
+               							    <input type="radio" name="cnyin_type1" value="alipay" id="RadioGroup1_0">
+               							    支付宝</label>
+               							  <label style="display: none">
+               							    <input type="radio" name="cnyin_type1" value="weixin" id="RadioGroup1_0">
+               							    微信</label>
+               							  <label id="cnyin_type1">
+               							    <input type="radio" name="cnyin_type1" value="bank" id="RadioGroup1_1">
+               							    银行卡</label>
+               							    <font>（必须本人支付）</font>
+           							  </p>
+                                    </li>
+                                    <li><input type="button" class="btns2" value="卖出" onClick="cnyin_up(1)" style="background: #e55600"></li>
+               					</ul>
+               			</div>
+                	</div>
+                	<div class="left">
+						<h1>买入CNYT</h1>
+               			<div class="forms">
+               					<ul>
+               						<li>
+               							<span>我的余额：</span>
+               							<p>{$user_coin.cny} CNYT</p>
+               						</li>
+               						<li>
+               							<span>买入估价：</span>
+               							<p>1.0 CNYT</p>
+               						</li>
+               						<li>
+               							<span>买入量：</span>
+               							<p><input type="text" name="num" id="cnyin_num" value="" onBlur="jnum(this.value,1)"></p>
+               						</li>
+               						<li>
+               							<span>金额：</span>
+               							<p id="pric">0 CNY</p> 
+               						</li>
+               						<li>
+               							<span>交易方式：</span>
+           							  <p>
+               							  <label >
+               							    <input name="cnyin_type" type="radio"   value="alipay" >
+               							    支付宝</label>
+               							  <label style="display: none">
+               							    <input name="cnyin_type" type="radio"   value="weixin" >
+               							    微信</label>
+               							  <label>
+               							    <input name="cnyin_type"  id="cnyin_type" type="radio"   value="bank" >
+               							    银行卡</label>
+               							    <font id="">（必须本人支付）</font>
+           							  </p>
+                                    </li>
+                                    <li><input type="button" class="btns2" value="买入" onClick="cnyin_up()"></li>
+               					</ul>
+               			</div>
+                	</div>
+               
+               
+               
+               
+               
+               
+                </div>
+                <div class="step2 f_body">
+                    <table class="f_table" id="investLog_content">
+                        <thead>
+                        <tr>
+                            <th width="">订单ID</th>
+                            <th width="">类型</th>
+                            <th width="">数量</th>
+                            <th width="">转账金额</th>
+                            <th width="">对方姓名</th>
+                            <th width="">对方电话</th>
+                            <th width="">对方账号</th>
+                            <th width="">付款二维码</th>
+                            <th width="">建立时间</th>
+                            <th width="">状态</th>
+                        </tr>
+                        </thead>
+                        <tbody> 
+						
+						
+						
+						<volist name="list" id="vo">
+						
+                           <tr>
+	                        <td>{$vo.cid}</td>
+	                        <td>{$vo.tpl}</td>
+	                        <td>{$vo.num}</td>
+                            <td><font style="color: #E55600!important;">￥{$vo.pri}</font></td>
+	                        <td>{$vo.truename}</td>
+                            <td>{$vo.min}</td>
+	                        <td>
+                           {$vo.kaihu}<br>
+                           账号：{$vo.username}<br>
+							<font style="color: #E55600!important;">付款备注：{$vo.cid}</font>                           
+                            </td>
+                            <td><img src="/Upload/public/{$vo.img}" style="max-width: 50px; max-height: 100px;" ></td>
+                            <td>{$vo.uptime|date='Y-m-d H:i:s',###}</td>
+	                        <td>
+			                   
+						<eq name="vo.tpl" value="买入">	
+							<eq name="vo.status" value="1">	
+							   <div>未付款<a  href="/Finance/mycz_q/id/{$vo.cid}" style="    color: #2674FF!important;"> 我已汇款 </a></div>
+			                </eq>
+							<eq name="vo.status" value="2">
+								待卖家确认
+							</eq>
+						</eq>
+						<eq name="vo.tpl" value="卖出">	
+							<eq name="vo.status" value="1">
+							   <div>未付款<a  href="/Finance/mycz_q/id/{$vo.cid}" style="    color: #2674FF!important;"> 我已收款 </a></div>
+			                </eq>
+							<eq name="vo.status" value="2">
+							   <div>已付款<a  href="/Finance/mycz_q/id/{$vo.cid}" style="    color: #2674FF!important;"> 我已收款 </a></div>
+							</eq>
+						</eq>
+							<eq name="vo.status" value="99">
+								交易成功
+							</eq>
+							<eq name="vo.status" value="0">
+								交易取消
+							</eq>
+							<eq name="vo.pp" value="1">	
+						<eq name="vo.tpl" value="买入">	
+							<a class="cur" style="color: #E55600!important;" href="/Finance/mycz_del/id/{$vo.cid}">取消</a>
+						</eq>
+							</eq>
+							 </td>
+	                         </tr>
+						</volist>	 
+							 
+							 
+							 
+                                             
+                        </tbody>
+                    </table>
+                    <div class="pages"> {$page}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+	function toimg(url){
+		
+		layer.open({
+		  type: 1,
+		  title: false,
+		  closeBtn: 0,
+		  area: '516px',
+		  skin: 'layui-layer-nobg', //没有背景色
+		  shadeClose: true,
+		  content: "<img src='"+src+"' >" 
+		});		
+		
+	}
+	
+    $("#status-select").val("{$status}");
+    $("#status-select").change(function () {
+        var status = $("#status-select option:selected").val();
+        var url = '/Finance/mycz';
+        if (status) {
+            url += '/status/' + status+'.html';
+        }
+        window.location = url;
+    });
+	function jnum(num,tpl){
+		if(tpl==1){
+			if(num<100){
+				layer.tips('最低买入100.0CNYT', '#cnyin_num', {tips: 3});
+				return false;
+			}
+			if(num%100){
+				layer.tips('买入CNYT需为100的倍数', '#cnyin_num', {tips: 3});
+				return false;
+			}
+			$("#pric").html(num*1+" CNY");
+		}else{
+			if(num<100){
+				layer.tips('最低卖出100.0CNYT', '#cnyin_num1', {tips: 3});
+				return false;
+			}
+			if(num%100){
+				layer.tips('卖出CNYT需为100的倍数', '#cnyin_num1', {tips: 3});
+				return false;
+			}
+			var nums = num *0.995;
+			$("#prir").html(nums.toFixed(1)+" CNY");
+		}
+	}
+
+	var lock = 0;
+    function cnyin_up(tbs) {
+		if(tbs){
+			var type = $("input[name='cnyin_type1']:checked").val();;
+			var num = $("#cnyin_num1").val();
+			if (type == "" || type == null) {
+				layer.tips('请选择交易方式', '#cnyin_type1', {tips: 2});
+				return false;
+			}
+			if (num == "" || num == null) {
+				layer.tips('请输入买入量', '#cnyin_num1', {tips: 2});
+				return false;
+			} else {
+			   // num = num + $('#random').html();
+			}
+			var tpl = 2;
+		}else{
+			var type = $("input[name='cnyin_type']:checked").val();;
+			var num = $("#cnyin_num").val();
+			if (type == "" || type == null) {
+				layer.tips('请选择交易方式', '#cnyin_type', {tips: 2});
+				return false;
+			}
+			if (num == "" || num == null) {
+				layer.tips('请输入买入量', '#cnyin_num', {tips: 2});
+				return false;
+			} else {
+			   // num = num + $('#random').html();
+			}	
+			var tpl = 1;
+		}
+	    if(lock){
+		    layer.msg('加载中,请勿重复点击...');
+		    return;
+	    }
+	    lock = 1;
+        $.post("/Finance/myc2c/", {
+            tpl: tpl,
+            type: type,
+            num: num
+        }, function (data) {
+	        lock = 0;
+            if (data.status == 1) {
+                layer.msg(data.info, {icon: 1});
+				window.setTimeout("refreshPage()",2000); 
+            } else {
+                layer.msg(data.info, {icon: 2});
+            }
+        }, "json");
+    }
+	function refreshPage(){
+		window.location = "/Finance/mycz.html";
+	}
+</script>
+
+<script>
+	var hints = "0";
+	if(hints == 1){
+		$('#hints').show();
+	}
+	$('#finance_box').addClass('active');
+	$('.finan_pay').addClass('active');
+</script>	
+
+		
+<include file="Public:footer" />

@@ -1,0 +1,201 @@
+<include file="Public:header"/>
+<div id="main-content">
+	<div id="top-alert" class="fixed alert alert-error" style="display: none;">
+		<button class="close fixed" style="margin-top: 4px;">&times;</button>
+		<div class="alert-content">警告内容</div>
+	</div>
+	<div id="main" class="main">
+		<div class="main-title-h">
+			<span class="h1-title">上币申请</span>
+		</div>
+		<div class="cf">
+			<div class="fl"></div>
+			<div class="search-form fr cf">
+				<div class="sleft">
+					<form name="formSearch" id="formSearch" method="get" name="form1">
+
+						<select style=" width: 160px; float: left; margin-right: 10px;" name="field" class="form-control">
+							<option value="uid"
+							<eq name="Think.get.field" value="uid">selected</eq>
+							>UID</option>
+							<option value="mobile"
+							<eq name="Think.get.field" value="mobile">selected</eq>
+							>手机号</option>
+							<option value="bid"
+							<eq name="Think.get.field" value="bid">selected</eq>
+							>币种</option>
+						</select>
+						<input type="text" name="name" class="search-input form-control  " value="{$Think.get.name}" placeholder="请输入查询内容" style="">
+						<a class="sch-btn" href="javascript:;" id="search"> <i class="btn-search"></i> </a>
+					</form>
+					<script>
+						//搜索功能
+						$(function () {
+							$('#search').click(function () {
+								$('#formSearch').submit();
+							});
+						});
+						//回车搜索
+						$(".search-input").keyup(function (e) {
+							if (e.keyCode === 13) {
+								$("#search").click();
+								return false;
+							}
+						});
+					</script>
+				</div>
+			</div>
+		</div>
+		<div class="data-table table-striped">
+			<table class="" style="overflow:auto">
+				<thead>
+				<tr>
+					<th class="row-selected row-selected"><input class="check-all" type="checkbox"/></th>
+					<th class="">ID</th>
+					<th class="">Email</th>
+					<th class="">團隊聯係方式</th>
+					<th class="">幣種英文名稱</th>
+                    <th class="">幣種中文名稱</th>
+                    <th class="">幣種交易符號</th>
+                    <th class="">ICO日期</th>
+                    <th class="">可流通日期</th>
+                    <th class="">幣種區塊網絡類型</th>
+                    <th class="">代幣合約地址</th>
+                    <th class="">小數點位數</th>
+                    <th class="">幣種官方網站</th>
+                    <th class="">幣種白皮書網址</th>
+                    <th class="">區塊瀏覽器</th>
+                    <th class="">Logo圖片鏈接</th>
+                    <th class="">Twitter鏈接</th>
+                    <th class="">Telegram鏈接</th>
+                    <th class="">幣種簡短中文介紹</th>
+                    <th class="">幣種簡短英文介紹</th>
+                    <th class="">幣種總量</th>
+                    <th class="">幣種流通量</th>
+                    <th class="">幣種分配比例</th>
+                    <th class="">成本價格</th>
+                    <th class="">已上線交易平台</th>
+                    <th class="">钱包下载地址</th>
+                    <th class="">现有持币用户规模</th>
+                    <th class="">上币活动支持</th>
+                    <th class="">社区QQ群号</th>
+                    <th class="">项目团队介绍</th>
+                    <th class="">其他信息說明</th>
+                    <th class="">提交时间</th>
+				</tr>
+				</thead>
+				<tbody>
+				<notempty name="sql">
+					<volist name="sql" id="vo">
+						<tr>
+							<td><input class="ids" type="checkbox" name="id[]" value="{$vo.id}"/></td>
+							<td>{$vo.id}</td>
+							<td>{$vo.data1}</td>
+							<td>{$vo.data2}</td>
+							<td>{$vo.data3}</td>
+							<td>{$vo.data4}</td>
+							<td>{$vo.data5}</td>
+							<td>{$vo.data6}</td>
+							<td>{$vo.data7}</td>
+							<td>{$vo.data8}</td>
+							<td>{$vo.data9}</td>
+							<td>{$vo.data10}</td>
+							<td>{$vo.data11}</td>
+							<td>{$vo.data12}</td>
+							<td>{$vo.data13}</td>
+							<td>{$vo.data14}</td>
+							<td>{$vo.data15}</td>
+							<td>{$vo.data16}</td>
+							<td>{$vo.data17}</td>
+							<td>{$vo.data18}</td>
+							<td>{$vo.data19}</td>
+							<td>{$vo.data20}</td>
+							<td>{$vo.data21}</td>
+							<td>{$vo.data22}</td>
+							<td>{$vo.data23}</td>
+							<td>{$vo.data25}</td>
+							<td>{$vo.data26}</td>
+							<td>{$vo.data27}</td>
+							<td>{$vo.data28}</td>
+							<td>{$vo.data29}</td>
+							<td>{$vo.data24}</td>
+							<td>{:date('Y-m-d H:i:s',$vo['addtime'])}</td>
+						</tr>
+					</volist>
+					<else/>
+					<td colspan="12" class="text-center">Oh! 暂时还没有内容!</td>
+				</notempty>
+				</tbody>
+			</table>
+            <button class="btn btnexcel" onClick="bank()" style=" margin:20px ">导出EXCEL表</button>
+			<div class="page">
+				<div>{$page}</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+					function bank(){
+						var excel = "1";
+						$.post("/Admin/User/bzsxsqexcel/", {
+							excel: excel,
+						}, function (data) {
+							if (data.status == 1) {
+								layer.msg(data.info, {icon: 1,time:3000});
+								window.location = window.location.href;
+								if(data.url){
+									window.location.href=data.url;
+								}else{
+									window.location = window.location.href;
+								}
+							} else {
+								$("#login_verify_up").click();
+								layer.msg(data.info, {icon: 2,time:3000});
+							}
+						}, "json");
+					}
+</script>
+<include file="Public:footer"/>
+<block name="script">
+	<script type="text/javascript" charset="utf-8">
+		//导航高亮
+		highlight_subnav("{:U('User/bzsxsq')}");
+	function Update(coinname,mobile) {
+		var msgy = "币："+coinname+" UID："+mobile+'<br>操作数量：<input class="num" type="text" value="0">  <br>负数冻结，正数解冻';
+		layer.confirm(msgy, 
+		{
+			btn: ['确认','取消'], //按钮
+			shade: false, //不显示遮罩
+			title:'请确认操作数量'
+		}, function(index){
+
+			var num = $(".num").val()
+		
+			$.post("/Admin/User/bzsxsq/", {
+				coin : coinname,
+				mobile : mobile,
+				num : num,
+			}, function (data) {
+				if (data.status == 1) {
+					layer.msg(data.info, {icon: 1});
+					window.setTimeout("window.location=window.location.href", 1000);
+				} else {
+					layer.msg(data.info, {icon: 2});
+					if (data.url) {
+						window.setTimeout("window.location=" + data.url, 1000);
+					}
+				}
+			}, "json");
+		
+			layer.close(index);
+		},function(index){
+			layer.close(index);
+		}
+		
+		);
+
+	}
+		
+		
+	</script>
+</block>

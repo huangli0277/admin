@@ -1,0 +1,418 @@
+
+<include file="Public:header" />
+	
+	
+	
+	
+	
+<div class="autobox ">
+	<div class="now">
+		<i class="fa fa-home fa-lg move mr5"></i><a href="/" class="movesay">首页</a> &gt; <a href="/finance/index.html" class="movesay">财务中心 </a> &gt; 币种上线申请	
+		</div>
+	<div class="main-content">
+		<style>
+	.nav-tab-list .nav-tab-hover{
+		width:100%;
+		top:60px;
+		height:50px;
+		line-height:50px;
+		background:#EAEDF4;
+		position:absolute;
+		box-sizing:content-box;
+		z-index:1;
+		transition:all 0.5s;
+		-webkit-transition:all 0.5s;
+		display:none; 
+	}
+</style>
+<script type="text/javascript">
+	$(function () {
+		(function () {
+			var tab   = $('.nav-tab-list dd');
+			var hover = $('.nav-tab-hover');
+			var pos   = 0;
+			tab.each(function (index) {
+				var $this = $(this);
+				if ($this.hasClass('active')) {
+					pos = index;
+				}
+				$this.hover(function () {
+					_moveTo(index);
+				}, function () {
+					_moveTo(pos);
+				});
+			});
+			_moveTo(pos);
+			$('.nav-tab-hover').show();
+			function _moveTo(index) {
+				hover.css("top", 60 + 50 * index);
+				tab.removeClass('active');
+				tab.eq(index).addClass('active');
+			}
+		})();
+	});
+	$(window).on('scroll resize', function () {
+		if (document.body.scrollTop < 100) {
+			$('#left-nav-bar').css("top", 0);
+		} else if (document.body.scrollTop > ($('.tag-list-content').height() - $('#left-nav-bar').height() + 100)) {
+			$('#left-nav-bar').css("top", ($('.tag-list-content').height() - $('#left-nav-bar').height()));
+		} else {
+			$('#left-nav-bar').css("top", document.body.scrollTop - 100);
+		}
+	});
+</script>
+
+
+<div class="left-nav-bar" id="left-nav-bar">
+	<div class="left-nav-slider">
+		<dl class="nav-tab-list">
+			<dt>
+				<a href="/Finance/myyj.html"><i class="fa fa-support mr10"></i>币种上线申请</a>
+			</dt>
+			<dt class="nav-tab-hover hover1"></dt>
+			<dd class="finan_index">
+				<a href="/Finance/bzsxsq.html">  币种上线申请 <i class="fa fa-angle-right fa-lg right mr10 mt17"></i> </a>
+			</dd>
+			<!--
+			<dd class="finan_pay">
+				<a href="/Finance/myyjadd.html">  添加预警 <i class="fa fa-angle-right fa-lg right mr10 mt17"></i> </a>
+			</dd>
+			<dd class="finan_pay">
+				<a href="/Finance/myyjjl.html">  预警记录 <i class="fa fa-angle-right fa-lg right mr10 mt17"></i> </a>
+			</dd>
+			<dd class="finan_fenhong">
+				<a href="/Finance/fhindex.html"> <i class="fa fa-dollar fa-lg fa-fw mr5"></i> 分红中心 <i class="fa fa-angle-right fa-lg right mr10 mt17"></i> </a>
+			</dd>
+			
+			<dd class="finan_myfh">
+				<a href="/Finance/myfhqq3479015851.html">  我的分红 <i class="fa fa-angle-right fa-lg right mr10 mt17"></i> </a>
+			</dd>
+			-->
+			
+		</dl>
+	</div>
+</div>
+<style>
+	.ydt-bank{ width: 100%; float: left}
+	.banklist{  width: 100%; float: left; padding: 10px 36px;}		
+	.banklist h3{ width: 100%; font-size: 18px; border-bottom: #eee 1px solid; margin-bottom: 10px; padding-bottom: 5px;}
+	.banklist .bank_f{ width: 100%; float: left; font-size: 15px;  line-height: 45px; margin: 8px 0}
+	.banklist .bank_f .left{ width: 25%; text-align: right; }
+	.banklist .bank_f .right{ width: 74%; text-align: left; }
+	.banklist .bank_f .right input{ width: 60%; padding: 7px;  border: #eee 1px solid; border-radius: 5px;}
+	.banklist .bank_f .right img{ width: 140px; border: #eee 1px solid}
+	.btns2{ height: auto; line-height: normal}
+	.texts{ width: 60%}
+	.top5px{ margin-top:5px}
+	.xin{ color:red; line-height:45px}
+\</style>
+
+		<div class="tag-list-content assets_content bg_w">
+			<div class="safe_center clear">
+				<h1>
+					<span>
+						币种上线申请					</span>
+				</h1>
+			</div>
+			<div class="ydt-bank">
+				<div class="banklist">
+					<div class="bankform">
+						<!--<div class="bank_f">
+							<div class="left">币种：</div>
+							<div class="right">
+								<select name="bid" id="bid" class="texts" onChange="hjdsahd(this.value)">
+									   <option value="">请选择</option>
+									   <volist name="blist" id="vo">
+                                       <if condition="$vo['id']  ">
+                                           <option value="{$vo['id']}">{$vo['title']}</option>
+                                       </if>   
+									   </volist>
+									 </select>
+							</div>
+						</div>-->
+						<div class="bank_f">
+							<div class="left"><span class="xin"> * </span>币种英文名称：</div>
+							<div class="right"><input class="top5px" name="data3" id="data3" type="text" placeholder="比如Bitcoin"></div>
+						</div>
+						<div class="bank_f">
+							<div class="left"><span class="xin"> * </span>币种中文名称：</div>
+							<div class="right"><input class="top5px" name="data4" id="data4" type="text" placeholder="比如 比特币"></div>
+						</div>
+						<div class="bank_f">
+							<div class="left"><span class="xin"> * </span>币种交易符号：</div>
+							<div class="right"><input class="top5px" name="data5" id="data5" type="text" placeholder="比如BTC"></div>
+						</div>
+						<div class="bank_f">
+							<div class="left">ICO日期：</div>
+							<div class="right"><input class="top5px" name="data6" id="data6" type="text" placeholder="2018-01-01"></div>
+						</div>
+						<div class="bank_f">
+							<div class="left">可流通日期：</div>
+							<div class="right"><input class="top5px" name="data7" id="data7" type="text" placeholder="2018-01-01"></div>
+						</div>
+						<div class="bank_f">
+							<div class="left"><span class="xin"> * </span>币种区块网络类型：</div>
+							<div class="right"><input class="top5px" name="data8" id="data8" type="text" placeholder="ETH，QTUM，NEO，XLM，BTS或者独立链"></div>
+						</div>
+						<div class="bank_f">
+							<div class="left">代币合约地址：</div>
+							<div class="right"><input class="top5px" name="data9" id="data9" type="text" placeholder=""></div>
+						</div>
+						<div class="bank_f">
+							<div class="left">钱包下载地址：</div>
+							<div class="right"><input class="top5px" name="data26" id="data25" type="text" placeholder=""></div>
+						</div>
+						<div class="bank_f">
+							<div class="left">小数点位数：</div>
+							<div class="right"><input class="top5px" name="data10" id="data10" type="text" placeholder="如Bitcoin是8"></div>
+						</div>
+						<div class="bank_f">
+							<div class="left"><span class="xin"> * </span>币种官方网站：</div>
+							<div class="right"><input class="top5px" name="data11" id="data11" type="text" placeholder=""></div>
+						</div>
+						<div class="bank_f">
+							<div class="left">币种白皮书网址：</div>
+							<div class="right"><input class="top5px" name="data12" id="data12" type="text" placeholder=""></div>
+						</div>
+						<div class="bank_f">
+							<div class="left">区块浏览器：</div>
+							<div class="right"><input class="top5px" name="data13" id="data13" type="text" placeholder=""></div>
+						</div>
+						<div class="bank_f">
+							<div class="left">Logo图片链接：</div>
+							<div class="right"><input class="top5px" name="data14" id="data14" type="text" placeholder=""></div>
+						</div>
+						<div class="bank_f">
+							<div class="left">Twitter链接：</div>
+							<div class="right"><input class="top5px" name="data15" id="data15" type="text" placeholder=""></div>
+						</div>
+						<div class="bank_f">
+							<div class="left">Telegram链接：</div>
+							<div class="right"><input class="top5px" name="data16" id="data16" type="text" placeholder=""></div>
+						</div>
+						<div class="bank_f">
+							<div class="left"><span class="xin"> * </span>币种简短中文介绍：</div>
+							<div class="right"><input class="top5px" name="data17" id="data17" type="text" placeholder=""></div>
+						</div>
+						<div class="bank_f">
+							<div class="left">币种简短英文介绍：</div>
+							<div class="right"><input class="top5px" name="data18" id="data18" type="text" placeholder=""></div>
+						</div>
+						<div class="bank_f">
+							<div class="left"><span class="xin"> * </span>币种总量：</div>
+							<div class="right"><input class="top5px" name="data19" id="data19" type="text" placeholder=""></div>
+						</div>
+						<div class="bank_f">
+							<div class="left">币种流通量：</div>
+							<div class="right"><input class="top5px" name="data20" id="data20" type="text" placeholder=""></div>
+						</div>
+						<div class="bank_f">
+							<div class="left">币种分配比例：</div>
+							<div class="right"><input class="top5px" name="data21" id="data21" type="text" placeholder="如ICO分发比例，团队预留等"></div>
+						</div>
+						<div class="bank_f">
+							<div class="left">成本价格：</div>
+							<div class="right"><input class="top5px" name="data22" id="data22" type="text" placeholder="presale，private sale，public sale等"></div>
+						</div>
+						<div class="bank_f">
+							<div class="left">已上线交易平台：</div>
+							<div class="right"><input class="top5px" name="data23" id="data23" type="text" placeholder="未上线写无"></div>
+						</div>
+						<div class="bank_f">
+							<div class="left">现有持币用户规模：</div>
+							<div class="right"><input class="top5px" name="data26" id="data26" type="text" placeholder=""></div>
+						</div>
+						<div class="bank_f">
+							<div class="left">上币活动支持：</div>
+							<div class="right"><input class="top5px" name="data27" id="data27" type="text" placeholder=""></div>
+						</div>
+						<div class="bank_f">
+							<div class="left"><span class="xin"> * </span>社区QQ群号：</div>
+							<div class="right"><input class="top5px" name="data28" id="data28" type="text" placeholder="若有多个请用；隔开"></div>
+						</div>
+						<div class="bank_f">
+							<div class="left">您的Email：</div>
+							<div class="right"><input class="top5px" name="data1" id="data1" type="text" placeholder=""></div>
+						</div>
+						<div class="bank_f">
+							<div class="left">项目团队介绍：</div>
+							<div class="right"><input class="top5px" name="data29" id="data29" type="text" placeholder=""></div>
+						</div>
+						<div class="bank_f">
+							<div class="left"><span class="xin"> * </span>项目方负责人联系方式：</div>
+							<div class="right"><input class="top5px" name="data2" id="data2" type="text" placeholder="注册手机号"></div>
+						</div>
+						<div class="bank_f">
+							<div class="left">其他信息说明：</div>
+							<div class="right"><input class="top5px" name="data24" id="data24" type="text" placeholder=""></div>
+						</div>
+						<div class="bank_f" style="padding-left:120px">
+							<p class="red" style="font-size:20px">温馨提示：</p>
+                            <p style="font-size:14px; color:#999">带<span class="xin"> * </span>为必填项</p>
+						</div>
+						<div class="bank_f">
+							<div class="left">&nbsp;</div>
+							<div class="right"><input type="button" value="提交上线申请" class="btns2" onClick="bank()"></div>
+						</div>
+					</div>
+				</div>
+				<ul style="display: none">
+					<li>
+						<input type="file" accept="image/gif, image/jpeg, image/jpg, image/png" id="inputfile1" style="height:0;width:0;z-index: -1; position: absolute;left: 10px;top: 5px;" value=""/>
+						<input type="file" accept="image/gif, image/jpeg, image/jpg, image/png" id="inputfile2" style="height:0;width:0;z-index: -1; position: absolute;left: 10px;top: 5px;" value=""/>
+						<input type="file" accept="image/gif, image/jpeg, image/jpg, image/png" id="inputfile3" style="height:0;width:0;z-index: -1; position: absolute;left: 10px;top: 5px;" value=""/>
+					</li>
+				</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+				<script>
+					function bank(){
+						var bid = $("#bid").val();
+						var data1 = $("#data1").val();
+						var data2 = $("#data2").val();
+						var data3 = $("#data3").val();
+						var data4 = $("#data4").val();
+						var data5 = $("#data5").val();
+						var data6 = $("#data6").val();
+						var data7 = $("#data7").val();
+						var data8 = $("#data8").val();
+						var data9 = $("#data9").val();
+						var data10 = $("#data10").val();
+						var data11 = $("#data11").val();
+						var data12 = $("#data12").val();
+						var data13 = $("#data13").val();
+						var data14 = $("#data14").val();
+						var data15 = $("#data15").val();
+						var data16 = $("#data16").val();
+						var data17 = $("#data17").val();
+						var data18 = $("#data18").val();
+						var data19 = $("#data19").val();
+						var data20 = $("#data20").val();
+						var data21 = $("#data21").val();
+						var data22 = $("#data22").val();
+						var data23 = $("#data23").val();
+						var data24 = $("#data24").val();
+						var data25 = $("#data25").val();
+						var data26 = $("#data26").val();
+						var data27 = $("#data27").val();
+						var data28 = $("#data28").val();
+						var data29 = $("#data29").val();
+						$.post("/Finance/bzsxsqs/", {
+							data1: data1,
+							data2: data2,
+							data3: data3,
+							data4: data4,
+							data5: data5,
+							data6: data6,
+							data7: data7,
+							data8: data8,
+							data9: data9,
+							data10: data10,
+							data11: data11,
+							data12: data12,
+							data13: data13,
+							data14: data14,
+							data15: data15,
+							data16: data16,
+							data17: data17,
+							data18: data18,
+							data19: data19,
+							data20: data20,
+							data21: data21,
+							data22: data22,
+							data23: data23,
+							data24: data24,
+							data25: data25,
+							data26: data26,
+							data27: data27,
+							data28: data28,
+							data29: data29,
+						}, function (data) {
+							if (data.status == 1) {
+								layer.msg(data.info, {icon: 1,time:3000});
+								window.location = window.location.href;
+								if(data.url){
+									window.location.href=data.url;
+								}else{
+									window.location = window.location.href;
+								}
+							} else {
+								$("#login_verify_up").click();
+								layer.msg(data.info, {icon: 2,time:3000});
+							}
+						}, "json");
+					}
+        $("#inputfile1").change(function () {
+            //创建FormData对象
+            var data = new FormData();
+            //为FormData对象添加数据
+            $.each($('#inputfile1')[0].files, function (i, file) {
+                data.append('upload_file' + i, file);
+            });
+            //发送数据
+            $.ajax({
+                url: '/ajax/imgbank',
+                type: 'POST',
+                data: data,
+                cache: false,
+                contentType: false,		//不可缺参数
+                processData: false,		//不可缺参数
+                success: function (data) {
+                    if (data) {
+						if(data=="error"){
+							alert("请选择正确的文件类型和大小！");
+							return false;
+						}
+						$('#sdcard1').attr('src','/Upload/pay/' + data);
+						$('#card1').val(data);
+                    }
+                },
+                error: function () {
+                    alert('上传出错');
+						$('#sdcard1').attr('src','/Upload/pay/alipay.jpg');
+						$('#card1').val('');
+					//$('.set_upload_img').hide();
+                    //$(".loading").hide();	//加载失败移除加载图片
+                }
+            });
+
+        });
+        $("#inputfile2").change(function () {
+            //创建FormData对象
+            var data = new FormData();
+            //为FormData对象添加数据
+            $.each($('#inputfile2')[0].files, function (i, file) {
+                data.append('upload_file' + i, file);
+            });
+            //发送数据
+            $.ajax({
+                url: '/ajax/imgbank',
+                type: 'POST',
+                data: data,
+                cache: false,
+                contentType: false,		//不可缺参数
+                processData: false,		//不可缺参数
+                success: function (data) {
+                    if (data) {
+						if(data=="error"){
+							alert("请选择正确的文件类型和大小！");
+							return false;
+						}
+						$('#sdcard2').attr('src','/Upload/pay/' + data);
+						$('#card2').val(data);
+                    }
+                },
+                error: function () {
+                    alert('上传出错');
+						$('#sdcard2').attr('src','/Upload/pay/weixin.jpg');
+						$('#card2').val('');
+					//$('.set_upload_img').hide();
+                    //$(".loading").hide();	//加载失败移除加载图片
+                }
+            });
+
+        });
+</script>
+<include file="Public:footer" />

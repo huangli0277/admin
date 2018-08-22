@@ -1,0 +1,125 @@
+<include file="Public:header"/>
+<div id="main-content">
+	<div id="top-alert" class="fixed alert alert-error" style="display: none;">
+		<button class="close fixed" style="margin-top: 4px;">&times;</button>
+		<div class="alert-content">警告内容</div>
+	</div>
+	<div id="main" class="main">
+		<div class="main-title-h">
+			<span class="h1-title">中奖管理</span>
+		</div>
+		<div class="cf">
+			<!--<div class="fl">-->
+				<!--<button class="btn ajax-post confirm btn-danger" url="{:U('User/awardStatus',array('type'=>'del'))}" target-form="ids">删 除</button>-->
+			<!--</div>-->
+			<div class="search-form fr cf">
+				<div class="sleft">
+					<form name="formSearch" id="formSearch" method="get" name="form1">
+						<select style="width: 160px; float: left; margin-right: 10px;" name="status" class="form-control">
+							<option value=""
+							<empty name="Think.get.status">selected</empty>
+							>-</option>
+							<option value="0"
+							<eq name="Think.get.status" value="0">selected</eq>
+							>未审核</option>
+							<option value="1"
+							<eq name="Think.get.status" value="1">selected</eq>
+							>已发放</option>
+                            <!--<option value="2"-->
+                            <!--<eq name="Think.get.status" value="2">selected</eq>-->
+                            <!--&gt;已发放</option>-->
+						</select>
+						<select style=" width: 160px; float: left; margin-right: 10px;" name="field" class="form-control">
+                            <option value=""
+                            <empty name="Think.get.field">selected</empty>
+                            >-</option>
+							<option value="truename"
+							<empty name="Think.get.field" value="truename">selected</empty>
+							>中奖人真名</option>
+							<option value="username"
+							<eq name="Think.get.field" value="username">selected</eq>
+							>中奖人登录名</option>
+							<option value="moble"
+							<eq name="Think.get.field" value="moble">selected</eq>
+							>中奖人手机</option>
+							<option value="name"
+							<eq name="Think.get.field" value="name">selected</eq>
+							>奖品名称</option>
+						</select>
+						<input type="text" name="name" class="search-input form-control  " value="{$Think.get.name}" placeholder="请输入查询内容" style="">
+						<a class="sch-btn" href="javascript:;" id="search"> <i class="btn-search"></i> </a>
+					</form>
+					<script>
+						//搜索功能
+						$(function () {
+							$('#search').click(function () {
+								$('#formSearch').submit();
+							});
+						});
+						//回车搜索
+						$(".search-input").keyup(function (e) {
+							if (e.keyCode === 13) {
+								$("#search").click();
+								return false;
+							}
+						});
+					</script>
+				</div>
+			</div>
+		</div>
+		<div class="data-table table-striped">
+			<table class="">
+				<thead>
+				<tr>
+					<th class="row-selected row-selected"><input class="check-all" type="checkbox"/></th>
+					<th class="">中奖人真名</th>
+					<th class="">中奖人手机号码</th>
+					<th class="">中奖人登录名</th>
+					<th width="">奖品名称</th>
+					<th width="">中奖时间</th>
+					<th width="">发奖时间</th>
+					<th width="">操作</th>
+				</tr>
+				</thead>
+				<tbody>
+				<notempty name="list">
+					<volist name="list" id="vo">
+						<tr>
+							<td><input class="ids" type="checkbox" name="id[]" value="{$vo.id}"/></td>
+							<td>{$vo.truename}</td>
+							<td>{$vo.moble}</td>
+							<td>{$vo.username}</td>
+							<td>{$vo.itemname}</td>
+							<td>{$vo.create_time}</td>
+							<td>{$vo.issued_time}</td>
+							<td>
+								<eq name="vo.status" value="0">
+									<a href="/admin/user/handleAward?id={$vo.id}&status={$vo.status}" class="ajax-get btn btn-primary btn-xs">待审核</a>
+								</eq>
+								<eq name="vo.status" value="1">
+									<a href="/admin/User/handleAward?id={$vo.id}&status={$vo.status}" class="ajax-get btn btn-info btn-xs">已发放</a>
+								</eq>
+								<!--<eq name="vo.status" value="2">-->
+									<!--<a href="javascript:" class="btn">已发放 </a>-->
+								<!--</eq>-->
+							</td>
+						</tr>
+					</volist>
+					<else/>
+					<td colspan="12" class="text-center">Oh! 暂时还没有内容!</td>
+				</notempty>
+				</tbody>
+			</table>
+			<div class="page">
+				<div>{$page}</div>
+			</div>
+		</div>
+	</div>
+</div>
+<include file="Public:footer"/>
+<block name="script">
+	<script type="text/javascript" charset="utf-8">
+		//导航高亮
+		highlight_subnav("{:U('User/award')}");
+	</script>
+</block>

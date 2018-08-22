@@ -1,0 +1,126 @@
+<include file="Public:header"/>
+<div id="main-content">
+	<div id="top-alert" class="fixed alert alert-error" style="display: none;">
+		<button class="close fixed" style="margin-top: 4px;">&times;</button>
+		<div class="alert-content">警告内容</div>
+	</div>
+	<div id="main" class="main">
+		<div class="main-title-h">
+			<span class="h1-title">交易奖励</span>
+		</div>
+		<div class="cf">
+			<div class="fl">
+			<a href="/Admin/Fenhong/myjy_f" class="btn btn-success ">发放奖励</a>
+			<a href="javascript:return false;" class="btn btn-success " onClick="gxdl()">更新队列</a>
+				总计发放：{$allnum} ，今日发放：{$allnumd} ，金额1：{$allnums}，金额2：{$allnumsy}
+			</div>
+			<div class="search-form fr cf">
+				<div class="sleft">
+					<form name="formSearch" id="formSearch" method="get" name="form1">
+						<select style="width: 160px; float: left; margin-right: 10px;" name="stu" class="form-control">
+							<option value=""
+							<empty name="Think.get.stu">selected</empty>
+							>全部状态</option>
+							<option value="1"
+							<eq name="Think.get.stu" value="1">selected</eq>
+							>未发放</option>
+							<option value="2"
+							<eq name="Think.get.stu" value="2">selected</eq>
+							>已经发放</option>
+						</select>
+						<input type="text" name="name" class="search-input form-control  " value="{$Think.get.name}" placeholder="请输入UID" style="">
+						<a class="sch-btn" href="javascript:;" id="search"> <i class="btn-search"></i> </a>
+					</form>
+					<script>
+						function gxdl() {
+							var msgy = '每1元奖励数量：<input class="piao" type="text" value="0">';
+							layer.confirm(msgy, 
+							{
+								btn: ['确认','取消'], //按钮
+								shade: false, //不显示遮罩
+								title:'请填写每人奖励数量'
+							}, function(index){
+								var piao = $(".piao").val();
+								$.post("/Admin/Fenhong/myjy_q/", {
+									num : piao
+								}, function (data) {
+									if (data.status == 1) {
+										layer.msg(data.info, {icon: 1});
+										window.setTimeout("window.location='/Admin/Fenhong/myjy.html'", 1000);
+									} else {
+										layer.msg(data.info, {icon: 2});
+										if (data.url) {
+											window.setTimeout("window.location=" + data.url, 1000);
+										}
+									}
+								}, "json");
+
+								layer.close(index);
+							},function(index){
+								layer.close(index);
+							}
+
+							);
+
+						}
+						//搜索功能
+						$(function () {
+							$('#search').click(function () {
+								$('#formSearch').submit();
+							});
+						});
+						//回车搜索
+						$(".search-input").keyup(function (e) {
+							if (e.keyCode === 13) {
+								$("#search").click();
+								return false;
+							}
+						});
+					</script>
+				</div>
+			</div>
+		</div>
+		<div class="data-table table-striped">
+			<table class="">
+				<thead>
+				<tr>
+                            <th width="">ID</th>
+                            <th width="">UID</th>
+                            <th width="">交易金额</th>
+                            <th width="">发放数量</th>
+                            <th width="">发放时间</th>
+                            <th width="">1未发 2已发</th>
+                            <th width="">队列时间</th>
+				</tr>
+				</thead>
+				<tbody>
+				<notempty name="list">
+					<volist name="list" id="vo">
+						<tr>
+							<td>{$vo['id']}</td>
+							<td>{$vo['userid']}</td>
+							<td>{$vo['allnum']}</td>
+	                        <td>{$vo.num}</td>
+                            <td>{$vo.addtime|date='Y-m-d H:i:s',###}</td>
+	                        <td>{$vo.start}</td>
+                            <td>{$vo.dtime}</td>
+						</tr>
+					</volist>
+					<else/>
+					<td colspan="12" class="text-center">Oh! 暂时还没有内容!</td>
+				</notempty>
+				</tbody>
+			</table>
+			<div class="page">
+				<div>{$page}</div>
+			</div>
+		</div>
+	</div>
+</div>
+<include file="Public:footer"/>
+<block name="script">
+	<script type="text/javascript" charset="utf-8">
+		//导航高亮
+		highlight_subnav("{:U('Finance/mycz')}");
+	</script>
+</block>

@@ -1,0 +1,178 @@
+<include file="Public:header" />
+	
+    
+
+	
+<div class="autobox ">
+	<div class="now">
+		<i class="fa fa-home fa-lg move mr5"></i><a href="/" class="movesay">首页</a> &gt; <a href="/task/index.html" class="movesay">C计划</a></div>
+	<div class="main-content">
+		<style>
+	.nav-tab-list .nav-tab-hover{
+		width:100%;
+		top:60px;
+		height:50px;
+		line-height:50px;
+		background:#EAEDF4;
+		position:absolute;
+		box-sizing:content-box;
+		z-index:1;
+		transition:all 0.5s;
+		-webkit-transition:all 0.5s;
+		display:none;
+	}
+</style>
+ 
+<include file="Task:left" />
+
+		<div class="tag-list-content assets_content bg_w">
+			<div class="safe_center clear">
+				<h1>
+					<span>C计划</span>
+					<!--<span>
+												<a class="right" onClick="$('#hints').slideToggle();"><i class="fa fa-hand-o-right move fz_14 mr5"></i><span class="fz_12 move">查看介绍</span></a>
+											</span>-->
+				</h1>
+			</div>
+			<!--<div id="hints" class="mytips" style="display:none;">
+				
+				<p>
+                <notempty name="prompt_text">
+                    {$prompt_text}
+                </notempty>
+				
+				</p>			
+				
+				</div>-->
+			<style>
+				.pur_dy_li{ height: 68px; margin: 0; line-height: 68px; width: 33%}
+				.fl{ float:left}
+				.clear{ clear:both}
+				.kuang .conlist .fl{ width:25%; text-align:center; font-size:14px; padding:8px}
+				.fontw{ font-weight:bolder}
+				.kuang .conlist:hover{ background:#dfe8ee;}
+				.kuang .conlist:nth-child(1):hover{ background:none;}
+
+			</style>
+			<div class="kuang" id="" style="width: 930px">
+						<div class="con">
+                        	<div class="conlist">
+                            	<div class="fl fontw">奖励类型</div>
+                            	<div class="fl fontw">数量/币种</div>
+                            	<div class="fl fontw">领取时间</div>
+                            	<div class="fl fontw">来源</div>
+                                <div class="clear"></div>
+                            </div>
+                            <volist name='list' id='vo'>
+                        	<div class="conlist">
+                            	<div class="fl">{$vo['hdid']}</div>
+                            	<div class="fl">{$vo['num']} / {$vo['coinname']}</div>
+                            	<div class="fl">{:date("m-d H:i:s",$vo['addtime'])}</div>
+                            	<div class="fl">{$vo['iftjr']}</div>
+                                <div class="clear"></div>
+                            </div>
+                            </volist>
+            </div>
+		</div>
+	</div>
+</div>
+<script>
+	function lin(id){
+		if(id==1) var name = "sign";
+		if(id==2) var name = "regist";
+		if(id==3) var name = "renzheng";
+		if(id==5) var name = "cjed";
+		if(id==6) var name = "yaoqing";
+		$.post("/Task/"+name+"/", {
+		}, function (data) {
+			if (data.status == 1) {
+				layer.msg(data.info, {icon: 1});
+				if(data.url){
+					window.setTimeout("window.location = "+data.url,2000); 
+			}else{
+				window.setTimeout("window.location = window.location.href",2000); 
+				}
+				
+			} else {
+				$("#login_verify_up").click();
+				layer.msg(data.info, {icon: 2});
+				//window.setTimeout("window.location.reload();",2000); 
+			}
+		}, "json");
+	}
+
+</script>
+<script type="text/javascript">
+	// 左边tab切换&浮动导航
+	$(function () {
+		// 左边tab切换&浮动导航
+		(function () {
+			var tab   = $('.nav-tab-list dd');
+			var hover = $('.nav-tab-hover');
+			var pos   = 0;
+			tab.each(function (index) {
+				var $this = $(this);
+				if ($this.hasClass('active')) {
+					pos = index;
+				}
+				$this.hover(function () {
+					_moveTo(index);
+				}, function () {
+					_moveTo(pos);
+				});
+			});
+			_moveTo(pos);
+			$('.nav-tab-hover').show();
+
+			function _moveTo(index) {
+				hover.css("top", 60 + 50 * index);
+				tab.removeClass('active');
+				tab.eq(index).addClass('active');
+			}
+		})();
+	});
+
+	$(window).on('scroll resize', function () {
+		if (document.body.scrollTop < 100) {
+			$('#left-nav-bar').css("top", 0);
+		} else if (document.body.scrollTop > ($('.tag-list-content').height() - $('#left-nav-bar').height() + 100)) {
+			$('#left-nav-bar').css("top", ($('.tag-list-content').height() - $('#left-nav-bar').height()));
+		} else {
+			$('#left-nav-bar').css("top", document.body.scrollTop - 100);
+		}
+	});
+</script>
+<script>
+	var hints = "0";
+	if(hints == 1){
+		$('#hints').show();
+	}
+	$('#finance_box').addClass('active');
+	$('.finan_index').addClass('active');
+</script>	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+<include file="Public:footer" />

@@ -1,0 +1,109 @@
+<include file="Public:header"/>
+<div id="main-content">
+	<div id="top-alert" class="fixed alert alert-error" style="display: none;">
+		<button class="close fixed" style="margin-top: 4px;">&times;</button>
+		<div class="alert-content">警告内容</div>
+	</div>
+	<div id="main" class="main">
+		<div class="main-title-h">
+			<span class="h1-title">挖矿解冻</span>
+		</div>
+		<div class="cf">
+			<div class="fl">
+			<a href="javascript:return false;" class="btn btn-success " onClick="gxdl()">立即解冻</a>
+				总计：{$allnum} 
+			</div> 
+			<div class="search-form fr cf">
+				<div class="sleft">
+					<form name="formSearch" id="formSearch" method="get" name="form1">
+						<input type="text" name="name" class="search-input form-control  " value="{$Think.get.name}" placeholder="请输入UID" style="">
+						<a class="sch-btn" href="javascript:;" id="search"> <i class="btn-search"></i> </a>
+					</form>
+					<script>
+						function gxdl() {
+							var msgy = '确定执行解冻1%？';
+							layer.confirm(msgy, 
+							{
+								btn: ['确认','取消'], //按钮
+								shade: false, //不显示遮罩
+								title:'确定执行解冻1'
+							}, function(index){
+								$.post("/Admin/Fenhong/mywk_f/", {
+									num : 1
+								}, function (data) {
+									if (data.status == 1) {
+										layer.msg(data.info, {icon: 1});
+										window.setTimeout("window.location='/Admin/Fenhong/mywk.html'", 1000);
+									} else {
+										layer.msg(data.info, {icon: 2});
+										if (data.url) {
+											window.setTimeout("window.location=" + data.url, 1000);
+										}
+									}
+								}, "json");
+
+								layer.close(index);
+							},function(index){
+								layer.close(index);
+							}
+
+							);
+
+						}
+						//搜索功能
+						$(function () {
+							$('#search').click(function () {
+								$('#formSearch').submit();
+							});
+						});
+						//回车搜索
+						$(".search-input").keyup(function (e) {
+							if (e.keyCode === 13) {
+								$("#search").click();
+								return false;
+							}
+						});
+					</script>
+				</div>
+			</div>
+		</div>
+		<div class="data-table table-striped">
+			<table class="">
+				<thead>
+				<tr>
+                            <th width="">ID</th>
+                            <th width="">UID</th>
+                            <th width="">冻结总额（CNUT）</th>
+                            <th width="">解冻次数</th>
+                            <th width="">解冻时间</th>
+				</tr>
+				</thead>
+				<tbody>
+				<notempty name="list">
+					<volist name="list" id="vo">
+						<tr>
+							<td>{$vo['wid']}</td>
+							<td>{$vo['userid']}</td>
+							<td>{$vo['cnut']}</td>
+	                        <td>{$vo.yci}</td>
+                            <td>{$vo.jdtime|date='Y-m-d H:i:s',###}</td>
+						</tr>
+					</volist>
+					<else/>
+					<td colspan="12" class="text-center">Oh! 暂时还没有内容!</td>
+				</notempty>
+				</tbody>
+			</table>
+			<div class="page">
+				<div>{$page}</div>
+			</div>
+		</div>
+	</div>
+</div>
+<include file="Public:footer"/>
+<block name="script">
+	<script type="text/javascript" charset="utf-8">
+		//导航高亮
+		highlight_subnav("{:U('Finance/mycz')}");
+	</script>
+</block>

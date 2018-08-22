@@ -1,0 +1,249 @@
+<include file="Public:header" />
+	
+	
+	
+	
+	
+<div class="autobox ">
+	<div class="now">
+		<i class="fa fa-home fa-lg move mr5"></i><a href="/" class="movesay">首页</a> &gt; <a href="/finan/index.html" class="movesay">财务中心 </a> &gt; 修改预警	
+		</div>
+	<div class="main-content">
+		<style>
+	.nav-tab-list .nav-tab-hover{
+		width:100%;
+		top:60px;
+		height:50px;
+		line-height:50px;
+		background:#EAEDF4;
+		position:absolute;
+		box-sizing:content-box;
+		z-index:1;
+		transition:all 0.5s;
+		-webkit-transition:all 0.5s;
+		display:none; 
+	}
+</style>
+<script type="text/javascript">
+	$(function () {
+		(function () {
+			var tab   = $('.nav-tab-list dd');
+			var hover = $('.nav-tab-hover');
+			var pos   = 0;
+			tab.each(function (index) {
+				var $this = $(this);
+				if ($this.hasClass('active')) {
+					pos = index;
+				}
+				$this.hover(function () {
+					_moveTo(index);
+				}, function () {
+					_moveTo(pos);
+				});
+			});
+			_moveTo(pos);
+			$('.nav-tab-hover').show();
+			function _moveTo(index) {
+				hover.css("top", 60 + 50 * index);
+				tab.removeClass('active');
+				tab.eq(index).addClass('active');
+			}
+		})();
+	});
+	$(window).on('scroll resize', function () {
+		if (document.body.scrollTop < 100) {
+			$('#left-nav-bar').css("top", 0);
+		} else if (document.body.scrollTop > ($('.tag-list-content').height() - $('#left-nav-bar').height() + 100)) {
+			$('#left-nav-bar').css("top", ($('.tag-list-content').height() - $('#left-nav-bar').height()));
+		} else {
+			$('#left-nav-bar').css("top", document.body.scrollTop - 100);
+		}
+	});
+</script>
+
+
+<include file="Finance:left1" />
+<style>
+	
+	.ydt-bank{ width: 100%; float: left}
+	.banklist{  width: 100%; float: left; padding: 10px 36px;}		
+	.banklist h3{ width: 100%; font-size: 18px; border-bottom: #eee 1px solid; margin-bottom: 10px; padding-bottom: 5px;}
+	.banklist .bank_f{ width: 100%; float: left; font-size: 15px;  line-height: 45px; margin: 8px 0}
+	.banklist .bank_f .left{ width: 25%; text-align: right; }
+	.banklist .bank_f .right{ width: 74%; text-align: left; }
+	.banklist .bank_f .right input{ width: 60%; padding: 7px;  border: #eee 1px solid; border-radius: 5px;}
+	.banklist .bank_f .right img{ width: 140px; border: #eee 1px solid}
+	.btns2{ height: auto; line-height: normal}
+	.texts{ width: 60%}
+	.top5px{ margin-top:5px}
+</style>
+
+		<div class="tag-list-content assets_content bg_w">
+			<div class="safe_center clear">
+				<h1>
+					<span>
+						修改预警					</span>
+				</h1>
+			</div>
+			<div class="ydt-bank">
+				<div class="banklist">
+					<div class="bankform">
+						<div class="bank_f">
+							<div class="left">币种：</div>
+							<div class="right">
+								<select name="bid" id="bid" class="texts" >
+                                           <option value="{$id}" >{$title}</option>
+                                </select>
+							</div>
+						</div>
+						<div class="bank_f">
+							<div class="left">实时价格：</div>
+							<div class="right">{$source['new_price']|NumToStr}</div>
+						</div>
+					<h3>上涨行情预警</h3>
+						<div class="bank_f">
+							<div class="left">上涨预警一：</div>
+							<div class="right"><input class="top5px" name="yujing1" id="yujing1" type="text"  value="{$source['yujing1']}"  ></div>
+						</div>
+						<div class="bank_f">
+							<div class="left">上涨预警二：</div>
+							<div class="right"><input class="top5px" name="yujing2" id="yujing2" type="text"  value="{$source['yujing2']}" ></div>
+						</div>
+						<div class="bank_f">
+							<div class="left">上涨预警三：</div>
+							<div class="right"><input class="top5px" name="yujing3" id="yujing3" type="text"  value="{$source['yujing3']}"  ></div>
+						</div>
+					<h3>下跌行情预警</h3>
+						<div class="bank_f">
+							<div class="left">下跌预警一：</div>
+							<div class="right"><input class="top5px" name="yujing4" id="yujing4" type="text"  value="{$source['yujing4']}"  ></div>
+						</div>
+						<div class="bank_f">
+							<div class="left">下跌预警二：</div>
+							<div class="right"><input class="top5px" name="yujing5" id="yujing5" type="text"  value="{$source['yujing5']}"  ></div>
+						</div>
+						<div class="bank_f">
+							<div class="left">下跌预警三：</div>
+							<div class="right"><input class="top5px"  name="yujing6" id="yujing6" type="text" value="{$source['yujing6']}"  ></div>
+						</div>
+						<div class="bank_f">
+							<div class="left">&nbsp;</div>
+							<div class="right"><input type="button" value="保存" class="btns2" onClick="bank()"></div>
+						</div>
+					</div>
+				</div>
+				<ul style="display: none">
+					<li>
+						<input type="file" accept="image/gif, image/jpeg, image/jpg, image/png" id="inputfile1" style="height:0;width:0;z-index: -1; position: absolute;left: 10px;top: 5px;" value=""/>
+						<input type="file" accept="image/gif, image/jpeg, image/jpg, image/png" id="inputfile2" style="height:0;width:0;z-index: -1; position: absolute;left: 10px;top: 5px;" value=""/>
+						<input type="file" accept="image/gif, image/jpeg, image/jpg, image/png" id="inputfile3" style="height:0;width:0;z-index: -1; position: absolute;left: 10px;top: 5px;" value=""/>
+					</li>
+				</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+				<script>
+					function bank(){
+						var bid = $("#bid").val();
+						var yujing1 = $("#yujing1").val();
+						var yujing2 = $("#yujing2").val();
+						var yujing3 = $("#yujing3").val();
+						var yujing4 = $("#yujing4").val();
+						var yujing5 = $("#yujing5").val();
+						var yujing6 = $("#yujing6").val();
+						$.post("/Finance/myyjedits/", {
+							bid: bid,
+							yujing1: yujing1,
+							yujing2: yujing2,
+							yujing3: yujing3,
+							yujing4: yujing4,
+							yujing5: yujing5,
+							yujing6: yujing6
+						}, function (data) {
+							if (data.status == 1) {
+								layer.msg(data.info, {icon: 1});
+								window.location = window.location.href;
+								if(data.url){
+									window.location.href=data.url;
+								}else{
+									window.location = window.location.href;
+								}
+							} else {
+								$("#login_verify_up").click();
+								layer.msg(data.info, {icon: 2});
+							}
+						}, "json");
+					}
+        $("#inputfile1").change(function () {
+            //创建FormData对象
+            var data = new FormData();
+            //为FormData对象添加数据
+            $.each($('#inputfile1')[0].files, function (i, file) {
+                data.append('upload_file' + i, file);
+            });
+            //发送数据
+            $.ajax({
+                url: '/ajax/imgbank',
+                type: 'POST',
+                data: data,
+                cache: false,
+                contentType: false,		//不可缺参数
+                processData: false,		//不可缺参数
+                success: function (data) {
+                    if (data) {
+						if(data=="error"){
+							alert("请选择正确的文件类型和大小！");
+							return false;
+						}
+						$('#sdcard1').attr('src','/Upload/pay/' + data);
+						$('#card1').val(data);
+                    }
+                },
+                error: function () {
+                    alert('上传出错');
+						$('#sdcard1').attr('src','/Upload/pay/alipay.jpg');
+						$('#card1').val('');
+					//$('.set_upload_img').hide();
+                    //$(".loading").hide();	//加载失败移除加载图片
+                }
+            });
+
+        });
+        $("#inputfile2").change(function () {
+            //创建FormData对象
+            var data = new FormData();
+            //为FormData对象添加数据
+            $.each($('#inputfile2')[0].files, function (i, file) {
+                data.append('upload_file' + i, file);
+            });
+            //发送数据
+            $.ajax({
+                url: '/ajax/imgbank',
+                type: 'POST',
+                data: data,
+                cache: false,
+                contentType: false,		//不可缺参数
+                processData: false,		//不可缺参数
+                success: function (data) {
+                    if (data) {
+						if(data=="error"){
+							alert("请选择正确的文件类型和大小！");
+							return false;
+						}
+						$('#sdcard2').attr('src','/Upload/pay/' + data);
+						$('#card2').val(data);
+                    }
+                },
+                error: function () {
+                    alert('上传出错');
+						$('#sdcard2').attr('src','/Upload/pay/weixin.jpg');
+						$('#card2').val('');
+					//$('.set_upload_img').hide();
+                    //$(".loading").hide();	//加载失败移除加载图片
+                }
+            });
+
+        });
+</script>
+<include file="Public:footer" />
